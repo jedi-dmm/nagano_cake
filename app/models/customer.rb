@@ -29,7 +29,7 @@ class Customer < ApplicationRecord
                                   message: 'はカタカナで入力してください。'
                                 }
     validates :postcode,        format: {
-                                  with: VALID_ZIP_CODE,
+                                  with: VALID_POSTCODE,
                                   message: "はハイフンなし7桁で入力してください。"
                                 }
     validates :address
