@@ -29,6 +29,5 @@ Rails.application.routes.draw do
 	end
 
     get 'admins/home/top' => 'admin/homes#top', as: 'admin_top'
->>>>>>> origin/develop
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
