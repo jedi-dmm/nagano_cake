@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
 
 
 
-   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_KATAKANA = /\A[\p{katakana}\p{blank}ー－]+\z/
   VALID_POSTCODE = /\A\d{7}\z/  # 郵便番号（ハイフンなし7桁）
   VALID_TEL = /\A\d{10,11}\z/   # 電話番号（ハイフンなし11桁　固定電話の場合ハイフンなし10桁）
@@ -28,10 +28,10 @@ class Customer < ApplicationRecord
                                   with: VALID_KATAKANA,
                                   message: 'はカタカナで入力してください。'
                                 }
-    validates :postcode,        format: {
-                                  with: VALID_ZIP_CODE,
-                                  message: "はハイフンなし7桁で入力してください。"
-                                }
+    # validates :postcode,        format: {
+    #                               with: VALID_ZIP_CODE,
+    #                               message: "はハイフンなし7桁で入力してください。"
+    #                             }
     validates :address
     validates :tel,             format: {
                                   with: VALID_TEL,

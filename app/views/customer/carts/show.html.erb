@@ -1,0 +1,22 @@
+<!-- ページタイトル -->
+<h3>ショッピングカート</h3>
+
+<!-- 全削除リンク -->
+　<%= link_to "カートを空にする",destroy_carts_path,mothod: :delete,data: { confirm: 'カートを空にしてよろしいでしょうか?' } %>
+
+<!-- カート一覧 -->
+<%= @carts.each do |cart| %>
+	<%= cart_product.name %>
+	<%= cart_product.price %>
+	<!-- 個数は変更できるように変更 -->
+	<%= cart.product_quantity %>
+	<!-- 計算はmodelで定義 -->
+
+	<%= link_to "削除する",carts_path,mothod: :delete,data: { confirm: '削除してもよろしいでしょうか?' } %>
+
+	<%= link_to "買い物を続ける", products_path %>
+
+	<!-- 合計金額もmodelで定義 -->
+
+	<%= link_to "情報入力に進む",new_order_path %>
+<% end %>
