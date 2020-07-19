@@ -1,4 +1,4 @@
-class AdminCustomersController < ApplicationController
+class Admin::CustomersController < ApplicationController
 
   def index
   end

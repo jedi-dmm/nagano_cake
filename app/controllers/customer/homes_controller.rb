@@ -1,6 +1,2 @@
-class CustomerHomesController < ApplicationController
-
-  def top
-  end
-
+class Customer::HomesController < ApplicationController
 end
