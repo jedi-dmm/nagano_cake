@@ -1,4 +1,4 @@
-class CustomerPostsController < ApplicationController
+class Customer::PostsController < ApplicationController
 
   before_action :authenticate_user!
 

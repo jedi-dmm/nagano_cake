@@ -1,4 +1,4 @@
-class CartsController < ApplicationController
+class Customer::CartsController < ApplicationController
 	def show
 		@cart.customer_id = current_user.id
 		@product = Product.find(params[:id])
