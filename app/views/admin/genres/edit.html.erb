@@ -1,13 +1,13 @@
 <h4>ジャンル編集</h4>
 
-<%= form_for (@genre) do |f| %>
+<%= form_for(@genre,url:admin_genre_path) do |f| %>
 	<!-- 入力ボックス -->
 	<%= f.label :name, "ジャンル" %>
 	<%= f.text_field :name %>
 	<!-- ラジオボタン  -->
-	<%= f.radio_button :genre_status, :true %>
+	<%= f.radio_button :genre_status,:true %>
 	<%= f.label :genre_status,"有効" %>
-	<%= f.radio_button :genre_status, :false %>
+	<%= f.radio_button :genre_status,:false %>
 	<%= f.label :genre_status,"無効" %>
 	<!-- 追加ボタン -->
 	<%= f.submit '変更を保存する' %>

@@ -2,7 +2,7 @@
 <h3>ジャンル一覧・追加</h3>
 
 <!-- ジャンル追加 -->
-<%= form_for (@genre) do |f| %>
+<%= form_for(@genre,url:admin_genres_path) do |f| %>
 	<!-- 入力ボックス -->
 	<%= f.label :name, "ジャンル" %>
 	<%= f.text_field :name %>
@@ -36,7 +36,7 @@
 					 <% end %>
 				</td>
 				<td>
-					<%= link_to "編集する",edit_genre_path(id: genre.id) %>
+					<%= link_to "編集する",edit_admin_genre_path(id: genre.id) %>
 				</td>
 			</tr>
 		<% end %>
