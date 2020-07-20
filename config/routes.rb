@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
-	devise_for :customers
-	devise_for :admins
+	devise_for :customers, controllers: {
+    sessions: "customer/devise/sessions",
+    passwords: "customer/devise/passwords",
+    registrations: "customer/devise/registrations"
+  }
+	devise_for :admins, controllers: {
+    sessions: "admin/devise/sessions",
+    passwords: "admin/devise/passwords",
+    registrations: "admin/devise/registrations"
+  }
 
 	root 'customer/homes#top'
 
