@@ -1,9 +1,13 @@
 class Customer::CartsController < ApplicationController
 	def show
-		@cart.customer_id = current_user.id
-		@product = Product.find(params[:id])
-		@cart.product_id = @product.id
-		@carts = current_user.carts
+		@customer = Customer.find(1)
+		@cart.customer_id = @customer.id
+		# @product = Product.find(params[:id])
+		# @cart.product_id = @product.id
+		@carts = Cart.all #current_customerが使えるまで
+		# @carts = current_customer.carts
+
+		@cart_total = @cart.sub_total
 	end
 
 	def destroy
