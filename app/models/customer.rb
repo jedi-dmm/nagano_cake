@@ -13,35 +13,18 @@ class Customer < ApplicationRecord
 
 
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_KATAKANA = /\A[\p{katakana}\p{blank}ー－]+\z/
-  VALID_POSTCODE = /\A\d{7}\z/  # 郵便番号（ハイフンなし7桁）
-  VALID_TEL = /\A\d{10,11}\z/   # 電話番号（ハイフンなし11桁　固定電話の場合ハイフンなし10桁）
-  with_options presence: true do
-    validates :last_name
-    validates :first_name
-    validates :last_name_kana,  format: {
-                                  with: VALID_KATAKANA,
-                                  message: 'はカタカナで入力してください。'
-                                }
-    validates :first_name_kana, format: {
-                                  with: VALID_KATAKANA,
-                                  message: 'はカタカナで入力してください。'
-                                }
 
-    validates :postcode,        format: {
-                                  with: VALID_POSTCODE,
-                                  message: "はハイフンなし7桁で入力してください。"
-                                }
-    validates :address
-    validates :tel,             format: {
-                                  with: VALID_TEL,
-                                  message: "の入力が間違っています（ハイフンなしの数字）"
-                                }
-    validates :email,           format: {
-                                  with: VALID_EMAIL_REGEX
-                                }
-  end
+  validates :last_name,  presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana,  presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  validates :first_name_kana, presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  # カタカナ制限
+  validates :tel, presence: true, format: {with: /\A\d{10}$|^\d{11}\z/, message: '10桁か11桁の電話番号を入力してください。'}
+  # ！！！電話番号の検証は現状空白のみ！！！
+  validates :postcode,  presence: true, format: {with: /\A\d{7}\z/}
+   # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
+  validates :address, presence: true
+
 
 
 

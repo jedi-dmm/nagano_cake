@@ -1,0 +1,73 @@
+<div class="container-fluid">
+      <h2 class=""><mark>新規会員登録</mark></h2>
+
+  <div class="row mt-3">
+    <div class="">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <div class="row">
+          <%= f.label :名前, class: "" %>
+          <%= f.text_field :last_name, placeholder:"山田", class: "" %>
+          <%= f.text_field :first_name, placeholder:"花子", class: "" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <%= f.label :フリガナ, class: "" %>
+          <%= f.text_field :last_name_kana, placeholder:"ヤマダ", class: "" %>
+          <%= f.text_field :first_name_kana, placeholder:"ハナコ", class: "" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス, class: "" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"example@mail", class: "" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :郵便番号（ハイフンなし）, class: "" %>
+        <%= f.text_field :postcode, placeholder:"1234567", class: "" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :住所, class: "" %>
+        <%= f.text_field :address, class: "" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号（ハイフンなし）, class: "" %>
+        <%= f.text_field :tel, placeholder:"08012345678", class: "" %>
+      </div>
+
+
+
+      <div class="form-group">
+        <%= f.label :パスワード（6文字以上）, class: "" %>
+        <%= f.password_field :password, placeholder:"最低６文字必要です。", autocomplete: "new-password", class: "f" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード（確認用）, class: "" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "" %>
+      </div>
+
+      <div class="row">
+        <%= f.submit "会員登録", class: "" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+  <div class="row">
+    <div class="">
+      <%= link_to "会員の方はこちらからログイン", new_session_path(resource_name), class: "" %>
+    </div>
+  </div>
+
+
+</div>
+</div>
