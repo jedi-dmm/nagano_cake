@@ -12,7 +12,7 @@
 	<%= f.radio_button :genre_status,:false %>
 	<%= f.label :genre_status,"無効" %>
 	<!-- 追加ボタン -->
-	<%= f.submit '追加' %>
+	<%= f.submit '追加',class: "btn btn-primary" %>
 <% end %>
 
 <!-- ジャンル一覧 -->
@@ -36,7 +36,7 @@
 					 <% end %>
 				</td>
 				<td>
-					<%= link_to "編集する",edit_admin_genre_path(id: genre.id) %>
+					<%= link_to "編集する",edit_admin_genre_path(id: genre.id),class: "btn btn-primary" %>
 				</td>
 			</tr>
 		<% end %>

@@ -1,13 +1,6 @@
 class Customer::CartsController < ApplicationController
-	def show
-		@customer = Customer.find(1)
-		@cart.customer_id = @customer.id
-		# @product = Product.find(params[:id])
-		# @cart.product_id = @product.id
-		@carts = Cart.all #current_customerが使えるまで
-		# @carts = current_customer.carts
-
-		@cart_total = @cart.sub_total
+	def index
+		@carts = current_customer.carts
 	end
 
 	def destroy
@@ -21,13 +14,13 @@ class Customer::CartsController < ApplicationController
 		if @cart.update(cart_params)
 			redirect_to carts_path
 		else
-			render 'show'
+			render 'carts/index'
 		end
 	end
 
 	def destroy_all
-		@carts = current_user.carts
-		@carts.destrot
+		@carts = current_customer.carts
+		@carts.destroy_all
 		redirect_to carts_path
 	end
 
