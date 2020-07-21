@@ -1,0 +1,74 @@
+<div class="container">
+
+
+    <h2>配送先登録/一覧</h2>
+
+
+    <% if @post.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+            <h3><%= @post.errors.count %>error prohibited this obj from being saved:</h3>
+            <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+
+    <%= form_for @post, url:posts_path, method: :post do |f| %>
+
+        <div class="field">
+            <%= f.label :郵便番号 %>
+            <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :住所 %>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+        </div>
+
+        <div class="field">
+  	        <%= f.label :宛名 %>
+            <%= f.text_area :name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="actions">
+            <%= f.submit "登録する", class:"btn btn-primary" %>
+        </div>
+
+    <% end %>
+
+
+    <table class="table table-hover table-bordered">
+
+        <thead>
+            <tr>
+                <th>郵便番号</th>
+                <th>住所</th>
+                <th>宛名</th>
+                <th></th>
+                <th colspan="4"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @posts.each do |post| %>
+
+                <tr>
+                    <td><%= post.postcode %></td>
+                    <td><%= post.address %></td>
+                    <td><%= post.name %></td>
+                    <td>
+                        <%= link_to "編集する",edit_posts_path,class: "btn-sm btn-success" %>
+                        <%= link_to "削除する",posts_path,class: "btn-sm btn-danger", method: :destroy, data: { confirm: '本当に消しますか?' } %>
+                    </td>
+                </tr>
+
+            <% end %>
+        </tbody>
+
+    </table>
+
+
+</div>
