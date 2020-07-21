@@ -1,1 +1,6 @@
-<h1>good</h1>
+<h1>こんにちわ　<%= current_customer.id %></h1>
+	<% current_customer.carts.each do |cart| %>
+	<h1>こんにちわ<%= cart.product.price %></h1>
+	<% end %>
+
+		<h1>こんにちわ<%= Constants::POSTAGE %></h1>
