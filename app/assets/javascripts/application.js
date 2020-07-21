@@ -14,8 +14,4 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
-<<<<<<< HEAD
 //= require_tree .
-=======
-//= require_tree .
->>>>>>> origin/develop
