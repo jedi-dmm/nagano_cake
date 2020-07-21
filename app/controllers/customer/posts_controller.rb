@@ -18,7 +18,7 @@ class Customer::PostsController < ApplicationController
 
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params = current_customer)
     if @post.save
        flash[:notice] = "配送先を登録しました。"
        redirect_to posts_path(current_customer)
