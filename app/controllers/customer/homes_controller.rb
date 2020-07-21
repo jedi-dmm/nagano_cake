@@ -1,5 +1,6 @@
 class Customer::HomesController < ApplicationController
 
+<<<<<<< HEAD
 
   def top
   	@products = Product.all
@@ -9,4 +10,8 @@ class Customer::HomesController < ApplicationController
   end
 
 
+=======
+	def top
+	end
+>>>>>>> origin/develop
 end
