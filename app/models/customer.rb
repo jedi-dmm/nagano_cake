@@ -13,6 +13,7 @@ class Customer < ApplicationRecord
 
 
 
+
   validates :last_name,  presence: true
   validates :first_name, presence: true
   validates :last_name_kana,  presence: true, format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
@@ -23,6 +24,7 @@ class Customer < ApplicationRecord
   validates :postcode,  presence: true, format: {with: /\A\d{7}\z/}
    # 郵便番号のフォーマット指定 ハイフン無し７桁固定 Viewのフォーム設定
   validates :address, presence: true
+
 
 
 
