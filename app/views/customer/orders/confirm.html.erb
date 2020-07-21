@@ -1,0 +1,96 @@
+<div class="container">
+	<div class="row">
+		<div>
+			<h2>注文情報確認</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品</th>
+						<th>単価（税込）</th>
+						<th>数量</th>
+						<th>小計</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<% current_customer.carts.each do |cart| %>
+					<tr>
+			            <td><%= cart.product.name %></td>
+			            <td>
+			            	<% unit_price = cart.product.price * Constants::TAX_RATE %>
+			            	<%= unit_price.round %>
+			            </td>
+			            <td><%= cart.product_quantity %></td>
+			            <td>
+			            	<%= (unit_price * cart.product_quantity).round %>
+			            </td>
+			        </tr>
+			        <% end %>
+		        </tbody>
+		    </table>
+		</div>
+		<div class="col-xs-4">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>送料</td>
+						<td><%= Constants::POSTAGE %></td>
+					</tr>
+					<tr>
+						<td>商品合計</td>
+						<td>
+							<% total_fee = 0 %>
+							<% current_customer.carts.each do |cart| %>
+								<% unit_price = (cart.product.price * Constants::TAX_RATE).round %>
+								<% sub_total = unit_price * cart.product_quantity %>
+								<% total_fee += sub_total %>
+							<% end%>
+								<%= total_fee %>
+						</td>
+					</tr>
+					<tr>
+						<td>請求金額</td>
+						<td>
+							<%= total_fee + Constants::POSTAGE %>
+						</td>
+					</tr>
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>お支払い方法</td>
+						<td><%= @order.payment_i18n %></td>
+					</tr>
+					<tr>
+						<td>お届け先</td>
+						<td><%= @order.postcode+" "+@order.address+" "+@order.name %></td>
+					</tr>
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<%= form_for @order do |f| %>
+			  <div class="actions">
+			  	<%= f.hidden_field :customer_id %>
+			  	<%= f.hidden_field :payment %>
+			  	<%= f.hidden_field :postcode %>
+			  	<%= f.hidden_field :address %>
+			  	<%= f.hidden_field :name %>
+			  	<%= f.hidden_field :postage %>
+			    <%= f.submit '購入を確定する' %>
+			  </div>
+			<% end %>
+		</div>
+	<div>
+</div>

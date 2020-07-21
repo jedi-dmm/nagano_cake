@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
 	root 'customer/homes#top'
 
+
 	  get 'homes/about' => 'customer/homes#about', as: 'about'
 	  delete 'carts/delete' => 'customer/carts#destroy_all', as: 'destroy_carts'
 	  post 'orders/confirm'  => 'customer/orders#confirm', as: 'confirm'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 	    resource :customer, only: [:show]
 	    resource :posts, only: [:show, :create, :edit, :destroy, :update]
 	end
+
 
 
 	namespace :admin do
