@@ -1,15 +1,77 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>WorkGithub</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <head>
+        <title>Nagano Cake</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+
+    <body>
+        <header class="navbar">
+            <div class="container">
+
+                <nav class="nav navbar-nav navbar-left">
+                    <h1>Nagano Cake</h1>
+                </nav>
+
+
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if customer_signed_in? %>
+                            <li>
+                                ようこそ、さん！
+                            </li>
+                            <li>
+                                <%= link_to ' マイページ', customer_path(current_customer) %>
+                            </li>
+                            <li>
+                                <%= link_to ' 商品一覧', products_path %>
+                            </li>
+                            <li>
+                                <%= link_to ' カート', carts_path %>
+                            </li>
+                            <li>
+                                <%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %>
+                            </li>
+                        <% else %>
+                            <li>
+                                <%= link_to ' About', about_path %>
+                            </li>
+                            <li>
+                                <%= link_to ' 商品一覧', products_path %>
+                            </li>
+                            <li>
+                                <%= link_to ' 新規登録', new_customer_registration_path %>
+                            </li>
+                            <li>
+                                <%= link_to ' ログイン', new_customer_session_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+
+        <div class="container">
+
+            <% flash.each do |msg_class, msg| %>
+                <p id="notice"><%= notice %></p>
+            <% end %>
+
+　　　　　　　<div class= "container">
+                <%= yield %>
+            </div>
+
+        </div>
+
+
+    </body>
 </html>

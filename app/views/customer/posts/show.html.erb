@@ -16,7 +16,7 @@
     <% end %>
 
 
-    <%= form_for @post,:url => {controller: "posts", action: "update"}, method: :patch do |f| %>
+    <%= form_for @post, url:posts_path, method: :post do |f| %>
 
         <div class="field">
             <%= f.label :郵便番号 %>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="field">
-  	        <%= f.label :name %>
+  	        <%= f.label :宛名 %>
             <%= f.text_area :name, autofocus: true, autocomplete: "name" %>
         </div>
 
@@ -60,8 +60,8 @@
                     <td><%= post.address %></td>
                     <td><%= post.name %></td>
                     <td>
-                        <%= link_to "編集する",edit_posts_path(@customer.id),class: "btn-sm btn-success" %>
-                        <%= link_to "削除する",post,class: "btn-sm btn-danger", method: :destroy, data: { confirm: '本当に消しますか?' } %>
+                        <%= link_to "編集する",edit_posts_path,class: "btn-sm btn-success" %>
+                        <%= link_to "削除する",posts_path,class: "btn-sm btn-danger", method: :destroy, data: { confirm: '本当に消しますか?' } %>
                     </td>
                 </tr>
 

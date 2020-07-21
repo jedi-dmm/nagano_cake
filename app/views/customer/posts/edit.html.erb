@@ -20,7 +20,7 @@
             <% end %>
 
 
-            <%= form_for @post,:url => {controller: "posts", action: "update"}, method: :patch do |f| %>
+            <%= form_for @post, url:posts_path(@posts), method: :patch do |f| %>
 
                 <div class="field">
                     <%= f.label :郵便番号 %>
