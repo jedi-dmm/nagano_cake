@@ -4,28 +4,36 @@ class Customer::OrdersController < ApplicationController
 	end
 
 	def new
+		@posts = Post.where(customer_id: current_customer.id)
 		@order = Order.new
-		# @order_product = Order_product.new
 		# @cart = Cart.where(customer_id: current_customer.id)
 		# @order.customer_id = current_customer.id
 		# @order_product.customer_id = current_customer.id
 	end
 
+	def confirm
+		@order = Order.new(order_params)
+		@order.customer_id = current_customer.id
+		@order.postage = Constants::POSTAGE
+		@post = Post.find_by(id: @order.address)
+		@order.postcode = @post.postcode
+		@order.address = @post.address
+		@order.name = @post.name
+		render :new if @order.invalid?
+	end
+
 	def create
+		# order_product = Order_product.new
+		@order = Order.new(order_params)
+		@order.customer_id = current_customer.id
+	    if @order.save
+	    	redirect_to thanks_path
+	 	else
+	    	redirect_to new_order_path
+	    end
 	end
 
 	def show
-		order = Order.find(params[:id])
-		order.order_products.each do |order_product|
-			subtotal = order_product.unit_price * order_product.product_quantity
-			total_fee = total_fee + subtotal
-		end
-		charge = order.postage + total_fee
-	end
-
-	def confirm
-  		@order = Order.new(order_params)
-		render :new if @order.invalid?
 	end
 
 	def thanks
@@ -33,12 +41,12 @@ class Customer::OrdersController < ApplicationController
 
 	private
 
-    def order_params
-        params.require(:book).permit(:title, :body)
-    end
+	def order_params
+		params.require(:order).permit(:customer_id, :payment, :postage, :name, :postcode, :address)
+	end
 
-    def order__product_params
-        params.require(:book).permit(:title, :body)
-    end
+	def order_product_params
+		params.require(:order_product).permit(:payment, :postage, :name, :postcode, :address)
+	end
 
 end

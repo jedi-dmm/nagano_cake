@@ -17,6 +17,8 @@ class Order < ApplicationRecord
 	belongs_to :customer
 
 
+
+
 	enum order_status:{
 		waiting_for_payment:        0, #入金待ち
 		payment_confirmation:       1, #入金確認

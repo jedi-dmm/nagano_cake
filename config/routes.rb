@@ -13,20 +13,20 @@ Rails.application.routes.draw do
 
 	root 'customer/homes#top'
 
+	get 'homes/about' => 'customer/homes#about', as: 'about'
+	delete 'carts/delete' => 'customer/carts#destroy_all', as: 'destroy_carts'
+	post 'orders/confirm'  => 'customer/orders#confirm', as: 'confirm'
+	get 'orders/thanks'  => 'customer/orders#thanks', as: 'thanks'
+	get 'customers/leave' => 'customer/customers#leave', as: 'leave'
+	patch 'customers/hide' => 'customer/customers#hide', as: 'hide'
+
 	scope module: :customer do
 	    resources :products, only: [:show, :index]
-	    resource :carts, only: [:show, :create, :destroy, :update]
+	    resources :carts, only: [:show, :create, :destroy, :update]
 	    resources :orders, only: [:show, :index, :new, :create]
 	    resource :customer, only: [:show]
 	    resource :posts, only: [:show, :create, :edit, :destroy, :update]
 	end
-
-	  get 'homes/about' => 'customer/homes#about', as: 'about'
-	  delete 'carts/delete' => 'customer/carts#destroy_all', as: 'destroy_carts'
-	  post 'orders/confirm'  => 'customer/orders#confirm', as: 'confirm'
-	  get 'orders/thanks'  => 'customer/orders#thanks', as: 'thanks'
-	  get 'customers/leave' => 'customer/customers#leave', as: 'leave'
-	  patch 'customers/hide' => 'customer/customers#hide', as: 'hide'
 
 	namespace :admin do
 	    resources :genres, only: [:create, :index, :edit, :update]

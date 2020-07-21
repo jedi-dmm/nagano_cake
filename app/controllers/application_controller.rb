@@ -3,10 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-	def common_item
-	　$tax_rate = 0.1
-	　$postage = 800
-	end
+	　TAX_RATE = 0.1
+	　POSTAGE = 800
 
   private
   def configure_permitted_parameters

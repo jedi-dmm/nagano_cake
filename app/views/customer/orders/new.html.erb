@@ -1,18 +1,23 @@
-<div>
-	<h2>注文情報入力</h2>
+<div class="container">
+	<div class="row">
+		<div>
+			<h2>注文情報入力</h2>
+		</div>
+
+			<div>
+		<%= form_with model: @order, local: true, url: confirm_path do |f| %>
+
+				<h2>支払方法</h2>
+				<%= f.radio_button :payment, :credit, checked: true %>
+				<%= f.label :payment, "クレジットカード", {value: :credit, style: "display: inline-block;"} %>
+				<%= f.radio_button :payment, :bank %>
+				<%= f.label :payment, "銀行", {value: :bank, style: "display: inline-block;"} %>
+			</div>
+			<div>
+				<h2>お届け先</h2>
+				    <%= f.collection_select(:address, @posts, :id, :view_post_full) %>
+					<%= f.submit %>
+		<% end %>
+		</div>
+	</div>
 </div>
-
-
-<%= form_with model: @order, local: true do |form| %>
-	<div>
-		<h2>支払方法</h2>
-		<%= form.radio_button :payment, :cregit, checked: true %>
-		<%= form.label :payment, "クレジットカード", {value: :credit, style: "display: inline-block;"} %>
-		<%= form.radio_button :payment, :bank %>
-		<%= form.label :payment, "銀行", {value: :bank, style: "display: inline-block;"} %>
-	</div>
-	<div>
-		<h2>お届け先</h2>
-		    <%= select :address, {'男性': 1, '女性': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-	</div>
-<% end %>
