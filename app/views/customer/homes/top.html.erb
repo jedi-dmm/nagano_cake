@@ -1,6 +1,43 @@
-<h1>こんにちわ　<%= current_customer.id %></h1>
-	<% current_customer.carts.each do |cart| %>
-	<h1>こんにちわ<%= cart.product.price %></h1>
-	<% end %>
+<div class="row">
 
-		<h1>こんにちわ<%= Constants::POSTAGE %></h1>
+    <div class="col-xs-3">
+    </div>
+
+    <div class="col-xs-9">
+        <div class="top_image">
+
+            <div class="top_image2">
+                ようこそ、NaganoCakeへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員でない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+            </div>
+
+        </div>
+
+
+        <h2>オススメ商品</h2>
+        <div class="row">
+    	    <div id="products">
+                <% @products.each do |product| %>
+
+                    <%= link_to product_path(product.id) do %>
+                        <%= attachment_image_tag product, :image, format: 'jpeg', size: "150x150",  fallback: "no_image.jpg"%><br>
+                    <% end %>
+
+                    <p><%= product.name %></p>
+
+                    <p>¥</p>
+
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-2 col-xs-offset-9">
+        <p><%= link_to "もっと見る＞", products_path %></p>
+    </div>
+
+
+</div>
