@@ -1,13 +1,20 @@
 class Customer::ProductsController < ApplicationController
 
 	def index
-		@products = Product.all
+        if params[:genre_id]
+            @products = Product.where(genre_id: params[:genre_id])
+        else
+		    @products = Product.all
+        end
 		# @products = Product.page(params[:page]).reserse_order(pagenate用)
+
+        # genre一覧（無効のものは表示しない）
+        @genres = Genre.where(genre_status: true)
     end
 
     def show
     	@product = Product.find(params[:id])
-
+        @cart = Cart.new
     end
 
 private

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 	  get 'customers/leave' => 'customer/customers#leave', as: 'leave'
 	  patch 'customers/hide' => 'customer/customers#hide', as: 'hide'
 
+
 	scope module: :customer do
 	    resources :products, only: [:show, :index]
 	    resources :carts, only: [:index, :create, :destroy, :update]
