@@ -6,6 +6,7 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class:"form-horizontal"}) do |f| %>
             <div class="row">
               <div class="col-xs-9 col-xs-offset-3">
+                <%= flash[:error] %>
                 <%# エラーメッセージ(login時はなぜかflashに入ってくるみたい) %>
                 <%- flash.each do |name, msg| -%>
                   <%= content_tag :p, msg, id: "flash_#{name}", class:"error_message" if msg.is_a?(String) %>
@@ -20,7 +21,7 @@
             <div class="form-group">
               <%= f.label :password, "パスワード", class:"col-xs-2 col-xs-offset-1 control-label" %>
               <div class="col-xs-9 "><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></div>
-              <p class="text-right"><%= render "devise/shared/links" %></p>
+              <p class="text-right"><%= link_to "=>パスワードを忘れた方はこちら","/customers/password/new"%></p>
             </div>
             <div class="form-group">
               <div class="col-xs-9 col-xs-offset-3"><%= f.submit "ログイン", class:"btn btn-primary" %></div>

@@ -7,6 +7,6 @@ class AddColumnsToCustomers < ActiveRecord::Migration[5.2]
   	add_column :customers, :postcode,:string
   	add_column :customers, :address,:string
   	add_column :customers, :tel,:string
-  	add_column :customers, :customer_status,:boolean
+  	add_column :customers, :customer_status,:boolean, default: true, null: false
   end
 end
