@@ -4,7 +4,7 @@
 	 	 <% @products.each do |product| %>
 	 	<div class="col-sm-2 col-md-offset-3">
 	 		<tr>商品画像<p><%= link_to product_path(product.id) do %>
-	 			<%= f.attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %>
+	 			<%= attachment_image_tag product, :image, :fill, 60, 60, format: 'jpeg' %>
 	 			<% end %>
 	    	</p></tr>
 	 		<tr>商品名<span><%= link_to product.name, product_path(product.id) %></span>
