@@ -10,7 +10,12 @@ class Customer::CustomersController < ApplicationController
 	end
 
 	def update
-
+		@customer = Customer.find(params[:id])
+		if @customer.update(customer_params)
+		redirect_to customer_path
+		else
+			render :edit
+		end
 	end
 
 	def leave
@@ -19,9 +24,7 @@ class Customer::CustomersController < ApplicationController
 
 	def hide
         @customer = Customer.find(current_customer.id)
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
-        @customer.update(customer_status: true)
-        #ログアウトさせる
+        @customer.update(customer_status: false)
         reset_session
         flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
       redirect_to new_customer_registration_path
@@ -30,6 +33,6 @@ class Customer::CustomersController < ApplicationController
 	private
  	def customer_params
   	  params.require(:customer).permit(:is_enabled, :last_name, :first_name, :last_name_kana, :first_name_kana,
-  	                                   :tel, :email, :password, :postcode, :address)
+  	                                   :tel, :email, :password, :postcode, :address, :customer_status)
 	end
 end

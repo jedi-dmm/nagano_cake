@@ -65,6 +65,6 @@ class Customer::Devise::RegistrationsController < Devise::RegistrationsControlle
 
   # ユーザー情報更新後、マイページに遷移させる
   def after_update_path_for(resource)
-    customer_path(resource)
+    customer_path
   end
 end

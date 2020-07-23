@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="col-xs-10 col-xs-offset-1">
+      <p id="notice"><%= notice %></p>
+        <h2 class="admin-customers-show-title"><%= @customer.last_name + "　" + @customer.first_name %>さんの会員詳細</h2>
+          <br><br>
+
+          <div class=row>
+            <h4 class="col-xs-2">顧客ID</h4>
+              <%= @customer.id %>
+              <% if @customer.customer_status == true %>
+                <span class="label label-primary ">有効会員</span>
+              <% else %>
+                <span class="label label-danger ">退会済会員</span>
+              <% end %>
+          </div>
+
+          <div class=row>
+            <div class="col-xs-2"><h4>氏名</h4></div>
+            <div><h4> <%= @customer.last_name + "　" + @customer.first_name %></h4></div> 
+          </div>
+
+          <div class=row>
+            <div class="col-xs-2"><h4>フリガナ</h4></div>
+            <div><h4><%= @customer.last_name_kana + "　" + @customer.first_name_kana %></h4></div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2"><h4>郵便番号</h4></div>
+            <td><h4><%= @customer.postcode %></h4></td>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2"><h4>住所</h4></div>
+            <div><h4><%= @customer.address %></h4></div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2"><h4>電話番号</h4></div>
+            <div><h4><%= @customer.tel %></h4></div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-2"><h4>メールアドレス</h4></div>
+            <td><h4><%= @customer.email %></h4></td>
+          </div>
+          <br><br>
+        <div class="row">
+          <div class="col-xs-1"><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-primary" %></div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-1"><%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %></div>
+        </div>
+    </div>
+  </div>
