@@ -8,6 +8,7 @@ class Customer::PostsController < ApplicationController
   def show
     @post = Post.new
     @customer = current_customer
+    @post.customer_id = current_customer.id
     @posts = Post.all
   end
 

@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
 
+	belongs_to :customer
+
+
   VALID_POSTCODE = /\A\d{7}\z/
 
   validates :address, presence: true
