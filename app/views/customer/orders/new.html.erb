@@ -4,9 +4,9 @@
 			<h2>注文情報入力</h2>
 		</div>
 
-			<div>
 		<%= form_with model: @order, local: true, url: confirm_path do |f| %>
 
+			<div>
 				<h2>支払方法</h2>
 				<%= f.radio_button :payment, :credit, checked: true %>
 				<%= f.label :payment, "クレジットカード", {value: :credit, style: "display: inline-block;"} %>
@@ -17,7 +17,7 @@
 				<h2>お届け先</h2>
 				    <%= f.collection_select(:address, @posts, :id, :view_post_full) %>
 					<%= f.submit %>
+			</div>
 		<% end %>
-		</div>
 	</div>
 </div>

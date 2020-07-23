@@ -1,38 +1,29 @@
 <div class="container">
 	 <div class="row">
-	 	<h2>商品一覧</h2>
+	 	<h2>商品新規登録</h2>
 	 	<div class="col-sm-3 col-md-offset-1">
-	 		<tr>商品画像</tr>
-	    	<tr>ファイル選択</tr>
+	 		<%= form_for(@product, url: admin_products_path) do |f| %>
+	 		<% if @product.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h3><%= @product.errors.count %></h3>
+	 		<ul>
+            <% @product.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+            <% end %>
+           </ul>
+          </div>
+        <% end %>
+	 		<tr>商品プレビュー</tr>
+	    	<tr>ファイル選択 <%= f.attachment_field :image %></tr>
 	 	</div>
 	    <div class="col-sm-4">
-	    	<tr>
-	    		<td>商品名</td>
-	    		<td>空欄</td>
-	    	</tr>
-	    	<tr>
-	    		<td>商品説明</td>
-	    		<td>空欄</td>
-	    	</tr>
-	    	<tr>
-	    		<td>ジャンル</td>
-	    		<td>空欄</td>
-	    	</tr>
-	    	<tr>
-	    		<td>税抜価格</td>
-	    		<td>空欄</td>
-	    	</tr>
-	    	<tr>
-	    		<td>販売ステータス</td>
-	    		<td>空欄</td>
-	    	</tr>
+	    		<h3>商品名       <%= f.text_field :name %></h3>
+	    		<h3>商品説明     <%= f.text_area :caption %></h3>
+	    		<h3>ジャンル      <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
+	    		<h3>税抜価格      <%= f.number_field :price %></h3>
+	    		<h3>販売ステータス     <%= f.select :sale_status [["販売中","販売中"],["売り切れ","売り切れ"], { include_blank: '選択してください'}] %></h3>
+	    		<tr><%= f.submit '新規登録' %></tr>
+	       <% end %>
 	    </div>
-        </div>
-        <div class="col-md-4"></div>
-
-        <div class="row">
-        <div class="col-sm-2 col-md-offset-10">
-	 		<tr>新規登録</tr>
-	 	</div>
-	 </div>
-</div>
+	  </div>
+  </div>
