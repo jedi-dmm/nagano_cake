@@ -1,30 +1,41 @@
 <div class="container">
+	<h2>商品編集</h2>
 	 <div class="row">
-	 	<h2>商品一覧</h2>
 	 	<div class="col-sm-3 col-md-offset-1">
+	 	  <%= form_for(@product, url: product_path) do |product| %>
+	 		<% if @product.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+           <h3><%= @product.errors.count %>error prohibited this obj from being saved:</h3>
+           <ul>
+            <% @product.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+            <% end %>
+           </ul>
+          </div>
+        <% end %>
 	 		<tr>商品画像</tr>
-	    	<tr>ファイル選択</tr>
+	    	<tr>ファイル選択 <%= f.attachment_field :image %></tr>
 	 	</div>
 	    <div class="col-sm-4">
 	    	<tr>
-	    		<td>商品名</td>
-	    		<td>空欄</td>
+	    		<td>商品名  </td>
+	    		<td><%= f.text_field :name %></td>
 	    	</tr>
 	    	<tr>
 	    		<td>商品説明</td>
-	    		<td>空欄</td>
+	    		<td><%= f.text_area :caption %></td>
 	    	</tr>
 	    	<tr>
 	    		<td>ジャンル</td>
-	    		<td>空欄</td>
+	    		<td><%= f.select :genre_id [["ケーキ", "ケーキ"],["焼き菓子","焼き菓子"],["プリン","プリン"],["キャンディ","キャンディ"], { include_blank: '選択してください'} %></td>
 	    	</tr>
 	    	<tr>
 	    		<td>税抜価格</td>
-	    		<td>空欄</td>
+	    		<td><%= f.number_field :price %></td>
 	    	</tr>
 	    	<tr>
 	    		<td>販売ステータス</td>
-	    		<td>空欄</td>
+	    		<td><%= f.select :sale_status [["販売中", "販売中"],["売り切れ","売り切れ"], { include_blank: '選択してください'} %></td>
 	    	</tr>
 	    </div>
         </div>
@@ -32,7 +43,8 @@
 
         <div class="row">
         <div class="col-sm-2 col-md-offset-10">
-	 		<tr>変更を保存</tr>
+	 		<tr><%= f.submit '変更を保存' %></tr>
 	 	</div>
 	 </div>
+	 <% end %>
 </div>
