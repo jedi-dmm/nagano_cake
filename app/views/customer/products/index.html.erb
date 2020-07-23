@@ -1,10 +1,14 @@
 <div class="container">
 	 <div class="row">
+       <div class="col-md-3">
+         <h2>ジャンル検索欄</h2>
+       </div>
+	   <div class="col-md-9">
+	   	 <div class="products box">
 	 	<h2>商品一覧</h2>
-	 	 <% @products.each do |product| %>
-	 	<div class="col-sm-2 col-md-offset-3">
+	 	 <% @products.each do |f| %>
 	 		<tr>商品画像<p><%= link_to product_path(product.id) do %>
-	 			<%= f.attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %>
+	 			<%= f.attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
 	 			<% end %>
 	    	</p></tr>
 	 		<tr>商品名<span><%= link_to product.name, product_path(product.id) %></span>
@@ -12,39 +16,7 @@
 	    	<tr>値段<span><%= product.price %></span>
 	    	</tr>
 	 	</div>
-	    <div class="col-sm-2">
-	    	<tr>商品名</tr>
-	    	<tr>値段</tr>
-	    </div>
-        <div class="col-sm-2">
-        	<tr>商品名</tr>
-	    	<tr>値段</tr>
         </div>
-        <div class="col-sm-2">
-        	<tr>商品名</tr>
-	    	<tr>値段</tr>
-        </div>
-        <div class="col-md-1"></div>
-     </div>
-
-     <div class="row">
-	 	<div class="col-sm-2 col-md-offset-2">
-	 		<tr>商品名</tr>
-	    	<tr>値段</tr>
-	 	</div>
-	    <div class="col-sm-2">
-	    	<tr>商品名</tr>
-	    	<tr>値段</tr>
-	    </div>
-        <div class="col-sm-2">
-        	<tr>商品名</tr>
-	    	<tr>値段</tr>
-        </div>
-        <div class="col-sm-2">
-        	<tr>商品名</tr>
-	    	<tr>値段</tr>
-        </div>
-        <div class="col-md-1"></div>
-     </div>
      <% end %>
+     </div>
 </div>
