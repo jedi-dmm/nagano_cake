@@ -1,0 +1,50 @@
+<div class="container"　data-turbolinks="false">
+	<div class="row">
+		<div>
+			<h3>注文履歴一覧</h3>
+		</div>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>注文日</th>
+						<th>配送先</th>
+						<th>注文商品</th>
+						<th>支払金額</th>
+						<th>ステータス</th>
+						<th>注文詳細</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @orders.each do |order| %>
+					<tr>
+						<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+						<td class="break">
+							<%= order.postcode %><br>
+							<%= order.address %><br>
+							<%= order.name %><br>
+						</td>
+						<td>
+							<% order.order_products.each do |order_product| %>
+								<p>・<%= order_product.product.name %></p>
+							<% end %>
+						</td>
+						<td class="vertical-center">
+							<% total_fee = 0 %>
+							<% order.order_products.each do |order_product| %>
+								<% sub_total = order_product.unit_price * order_product.product_quantity %>
+								<% total_fee += sub_total %>
+							<% end%>
+							<p><%= total_fee + Constants::POSTAGE %>円</p>
+						</td>
+						<td class="vertical-center"><%= order.order_status %></td>
+						<td class="vertical-center">
+							<%= link_to "表示する",order_path(order),class: "btn btn-success" %>
+						</td>
+					</tr>
+					<% end %>
+		        </tbody>
+		    </table>
+		</div>
+	</div>
+</div>

@@ -1,7 +1,7 @@
 class OrderProduct < ApplicationRecord
 
 	with_options presence: true do
-		validates :customer_id
+		validates :order_id
 		validates :product_id
 		validates :product_quantity
 		validates :unit_price
@@ -10,15 +10,15 @@ class OrderProduct < ApplicationRecord
 
 	attribute :production_status, :integer, default: 0
 
-	belongs_to :customer
+	belongs_to :order
 	belongs_to :product
 
 
 
 	enum production_status:{
-		not_payment:        		0, #着手不可
-		waiting_production:         1, #製作待ち
-		in_production:   			2, #製作中
-		production_completed:  		3, #製作完了
+		着手不可:        	0, #not_payment
+		製作待ち:        1, #waiting_production
+		製作中:   		2, #in_production
+		製作完了:  		3, #production_completed
 	}
 end

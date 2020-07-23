@@ -68,11 +68,14 @@
 				<tbody>
 					<tr>
 						<td>お支払い方法</td>
-						<td><%= @order.payment_i18n %></td>
+						<td><%= @order.payment %></td>
 					</tr>
 					<tr>
 						<td>お届け先</td>
-						<td><%= @order.postcode+" "+@order.address+" "+@order.name %></td>
+						<td>
+							<%= @order.postcode+" "+@order.address %><br>
+							<%= @order.name %>
+						</td>
 					</tr>
 		        </tbody>
 		    </table>

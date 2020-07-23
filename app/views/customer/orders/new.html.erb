@@ -1,23 +1,75 @@
-<div class="container">
+<div class="container"　data-turbolinks="false">
 	<div class="row">
 		<div>
-			<h2>注文情報入力</h2>
+			<h3>注文情報入力</h3>
 		</div>
 
-			<div>
-		<%= form_with model: @order, local: true, url: confirm_path do |f| %>
+		<div>
+			<%= form_tag(confirm_path, method: :post) do %>
+				<div  class="row">
+					<h3>支払方法</h3>
+						<%= radio_button_tag(:payment, "credit", :checked=>'checked' ) %>
+						<%= label_tag :クレジットカード %><br>
+						<%= radio_button_tag(:payment, "bank") %>
+						<%= label_tag :銀行 %>
+				</div>
+				<div  class="row">
+					<h3>お届け先</h3>
+							<!-- jQueryにて条件分岐　バリュー値に対応したinputother_idを持つフォームを有効に -->
+					<div>
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios1" checked="checked">
+							ご自身の住所
+						</label>
+					</div>
+					<div class="post_form">
+						<%= current_customer.postcode+" "+current_customer.address %><br>
+						<%= current_customer.last_name + current_customer.first_name %>
+					</div>
 
-				<h2>支払方法</h2>
-				<%= f.radio_button :payment, :credit, checked: true %>
-				<%= f.label :payment, "クレジットカード", {value: :credit, style: "display: inline-block;"} %>
-				<%= f.radio_button :payment, :bank %>
-				<%= f.label :payment, "銀行", {value: :bank, style: "display: inline-block;"} %>
-			</div>
-			<div>
-				<h2>お届け先</h2>
-				    <%= f.collection_select(:address, @posts, :id, :view_post_full) %>
-					<%= f.submit %>
-		<% end %>
+					<div>
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios2" value="1">
+							登録済住所から選択
+						</label>
+					</div>
+					<div class="post_form　row">
+					<%= collection_select :post_id,:id, @posts, :id, :view_post_full, {}, {id: "inputother_1", disabled: "disabled"} %>
+					</div>
+
+					<div>
+						<label>
+							<input type="radio" name="optionsRadios" id="optionsRadios3" value="2">
+							新しいお届け先
+						</label>
+					</div>
+					<div class="post_form">
+						<table>
+							<tbody>
+								<tr>
+									<td>郵便番号（ハイフンなし）</td>
+									<td>
+										<%= text_field_tag :new_postcode,"", {class: "validate required_postcode", id: "inputother_2", disabled: "disabled"} %>
+									</td>
+								</tr>
+								<tr>
+									<td>住所</td>
+									<td>
+										<%= text_field_tag :new_address,"", {class: "validate required_address", id: "inputother_3", disabled: "disabled"}  %>
+									</td>
+								</tr>
+								<tr>
+									<td>宛名</td>
+									<td>
+										<%= text_field_tag :new_name,"", {class: "validate required_name", id: "inputother_4", disabled: "disabled"}  %>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			<%= submit_tag "確認画面へ進む" %>
+			<% end %>
 		</div>
 	</div>
 </div>

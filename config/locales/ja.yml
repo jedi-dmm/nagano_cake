@@ -2,18 +2,18 @@ ja:
   enums:
     oeder:
       oeder_status:
-        waiting_for_payment:        "入金待ち"
-        payment_confirmation:       "入金確認"
-        In_production:              "製作中"
-        preparing_for_shipping:     "発送準備中"
-        completed_shipping:         "発送済み"
+        waiting_for_payment: 入金待ち
+        payment_confirmation:       入金確認
+        In_production:              製作中
+        preparing_for_shipping:     発送準備中
+        completed_shipping:         発送済み
       payment:
-        credit:                     "クレジットカード"
-        bank:                       "銀行振込"
+        credit:                     クレジットカード
+        bank:                       銀行振込
 
     order_product:
       production_status:
-        not_payment:                "着手不可"
-        waiting_production:         "製作待ち"
-        in_production:              "製作中"
-        production_completed:       "製作完了"
+        not_payment:                着手不可
+        waiting_production:         製作待ち
+        in_production:              製作中
+        production_completed:       製作完了
