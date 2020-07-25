@@ -1,29 +1,29 @@
 <div class="container">
-	 <div class="row">
-	 	<h2>商品新規登録</h2>
-	 	<div class="col-sm-3 col-md-offset-1">
-	 		<%= form_for(@product, url: admin_products_path) do |f| %>
-	 		<% if @product.errors.any? %>
-        <div id="error_explanation" class="alert alert-danger">
-          <h3><%= @product.errors.count %></h3>
-	 		<ul>
-            <% @product.errors.full_messages.each do |message| %>
-             <li><%= message %></li>
-            <% end %>
-           </ul>
-          </div>
-        <% end %>
-	 		<tr>商品プレビュー</tr>
-	    	<tr>ファイル選択 <%= f.attachment_field :image %></tr>
-	 	</div>
-	    <div class="col-sm-4">
-	    		<h3>商品名       <%= f.text_field :name %></h3>
-	    		<h3>商品説明     <%= f.text_area :caption %></h3>
-	    		<h3>ジャンル      <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
-	    		<h3>税抜価格      <%= f.number_field :price %></h3>
-	    		<h3>販売ステータス     <%= f.select :sale_status [["販売中","販売中"],["売り切れ","売り切れ"], { include_blank: '選択してください'}] %></h3>
-	    		<tr><%= f.submit '新規登録' %></tr>
-	       <% end %>
-	    </div>
-	  </div>
-  </div>
+	<div class="row">
+		<h2>商品新規登録</h2>
+		<%= form_for(@product, url: admin_products_path) do |f| %>
+		<div class="col-sm-3 col-md-offset-1">
+			<% if @product.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<h3><%= @product.errors.count %></h3>
+				<ul>
+					<% @product.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<tr>商品プレビュー</tr>
+			<tr>ファイル選択 <%= f.attachment_field :image %></tr>
+		</div>
+		<div class="col-sm-4">
+			<h3>商品名     <%= f.text_field :name %></h3>
+			<h3>商品説明   <%= f.text_area :caption %></h3>
+			<h3>ジャンル    <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
+			<h3>税抜価格      <%= f.number_field :price %></h3>
+			<h3>販売ステータス     <%= f.select :sale_status, Product.sale_statuses.keys %></h3>
+			<tr><%= f.submit '新規登録' %></tr>
+		</div>
+	 <% end %>
+	</div>
+</div>

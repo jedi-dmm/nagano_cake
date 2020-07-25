@@ -1,8 +1,9 @@
 <div class="container">
 	 <div class="row">
-	 	  <h2>商品一覧</h2>
+	 	  <h1>商品一覧</h1>
+      <%= link_to "+", new_admin_product_path, class: "btn btn-primary btn-circle pull-right" %>
 	 	<div class="col-sm-8 col-md-offset-2">
-
+    <table class="table table-hover">
 	    <thead>
           <tr>
             <th>商品ID</th>
@@ -17,7 +18,7 @@
           <% @products.each do |product| %>
             <tr>
               <td><%= product.id %></td>
-              <td><%= link_to product.name, product_path(product.id) %></td>
+              <td><%= link_to product.name, admin_product_path(product.id) %></td>
               <td><%= product.price %></td>
               <td><%= product.genre.id %></td>
               <td><%= product.sale_status %></td>
@@ -25,10 +26,6 @@
           <% end %>
         </tbody>
       </table>
-
 	 	</div>
-        <div class="col-md-2"></div>
-     </div>
-
      <%= paginate @products, class: "paginate" %>
 </div>
