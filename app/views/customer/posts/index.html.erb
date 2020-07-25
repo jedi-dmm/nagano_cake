@@ -56,16 +56,17 @@
                 <tbody>
                     <% @posts.each do |post| %>
 
-                        <tr>
-                            <td><%= post.postcode %></td>
-                            <td><%= post.address %></td>
-                            <td><%= post.name %></td>
-                            <td>
-                                <%= link_to "編集する",edit_post_path(post),class: "btn-sm btn-primary" %>
-                                <%= link_to "削除する",post_path(post),class: "btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
-                            </td>
-                        </tr>
-
+                        <% if current_customer.id == post.customer_id %>
+                            <tr>
+                                <td><%= post.postcode %></td>
+                                <td><%= post.address %></td>
+                                <td><%= post.name %></td>
+                                <td>
+                                    <%= link_to "編集する",edit_post_path(post),class: "btn-sm btn-primary" %>
+                                    <%= link_to "削除する",post_path(post),class: "btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか?' } %>
+                                </td>
+                            </tr>
+                        <% end %>
                     <% end %>
                 </tbody>
 
