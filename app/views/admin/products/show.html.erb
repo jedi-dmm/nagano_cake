@@ -1,38 +1,26 @@
 <div class="container">
 	 <div class="row">
-	 	<h2>商品詳細</h2>
-	 	<div class="col-sm-3 col-md-offset-1">
-	 		<tr>商品画像</tr>
-	    	<tr>ファイル選択 <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %></tr>
+	 		<h2>商品詳細</h2>
+	 	<div class="col-md-3">
+			<th></th>
+		</div>
+	 	<div class="col-md-3">
+	    	<tr><%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %></tr>
 	 	</div>
-	    <div class="col-sm-4">
-	    	<tr>
-	    		<td>商品名  </td>
-	    		<td><%= @product.name %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>商品説明</td>
-	    		<td><%= @product.caption %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>ジャンル</td>
-	    		<td><%= @product.genre_id %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>税抜価格</td>
-	    		<td><%= @product.price %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>販売ステータス</td>
-	    		<td><%= @product.sale_status %></td>
-	    	</tr>
+	    <div class="col-md-4">
+	    	<table class="table table-bordered">
+	    		<h3>商品名　<%= @product.name %></h3>
+	    		<h3>商品説明　<%= @product.caption %></h3>
+	    		<h3>ジャンル　<%= @product.genre_id %></h3>
+	    		<h3>税抜き価格　<%= @product.price %></h3>
+	    		<h3>販売ステータス　<%= @product.sale_status %></h3>
+	    	</table>
 	    </div>
         </div>
-        <div class="col-md-4"></div>
 
         <div class="row">
-        <div class="col-sm-2 col-md-offset-10">
-	 		<tr><%= link_to "編集", edit_product_path(@product.id) %></tr>
+        <div class="col-sm-3 col-md-offset-9">
+	 		<tr><%= link_to "編集", edit_admin_product_path(@product.id), class: "btn btn-primary" %></tr>
 	 	</div>
 	 </div>
 </div>

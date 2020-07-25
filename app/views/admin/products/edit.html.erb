@@ -1,50 +1,39 @@
 <div class="container">
-	<h2>商品編集</h2>
-	 <div class="row">
-	 	<div class="col-sm-3 col-md-offset-1">
-	 	  <%= form_for(@product, url: product_path) do |product| %>
-	 		<% if @product.errors.any? %>
-          <div id="error_explanation" class="alert alert-danger">
-           <h3><%= @product.errors.count %>error prohibited this obj from being saved:</h3>
-           <ul>
-            <% @product.errors.full_messages.each do |message| %>
-             <li><%= message %></li>
-            <% end %>
-           </ul>
-          </div>
-        <% end %>
-	 		<tr>商品画像</tr>
-	    	<tr>ファイル選択 <%= f.attachment_field :image %></tr>
-	 	</div>
-	    <div class="col-sm-4">
-	    	<tr>
-	    		<td>商品名  </td>
-	    		<td><%= f.text_field :name %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>商品説明</td>
-	    		<td><%= f.text_area :caption %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>ジャンル</td>
-	    		<td><%= f.select :genre_id [["ケーキ", "ケーキ"],["焼き菓子","焼き菓子"],["プリン","プリン"],["キャンディ","キャンディ"], { include_blank: '選択してください'} %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>税抜価格</td>
-	    		<td><%= f.number_field :price %></td>
-	    	</tr>
-	    	<tr>
-	    		<td>販売ステータス</td>
-	    		<td><%= f.select :sale_status [["販売中", "販売中"],["売り切れ","売り切れ"], { include_blank: '選択してください'} %></td>
-	    	</tr>
-	    </div>
-        </div>
-        <div class="col-md-4"></div>
-
-        <div class="row">
-        <div class="col-sm-2 col-md-offset-10">
-	 		<tr><%= f.submit '変更を保存' %></tr>
-	 	</div>
-	 </div>
-	 <% end %>
+	<div class="row">
+		<h2>商品編集</h2>
+		<div class="col-md-2">
+			<th></th>
+		</div>
+		<div class="col-md-3">
+			<th><%= form_for(@product, url: admin_product_path) do |f| %></th>
+			<% if @product.errors.any? %>
+			<div id="error_explanation" class="alert alert-danger">
+				<h3><%= @product.errors.count %>error prohibited this obj from being saved:</h3>
+				<ul>
+					<% @product.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<h3></h3>
+			<tr>ファイル選択 <%= f.attachment_field :image %></tr>
+		</div>
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<h3>商品名   <%= f.text_field :name %></h3>
+				<h3>商品説明  <%= f.text_area :caption %></h3>
+				<h3>ジャンル   <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
+				<h3>税抜価格   <%= f.number_field :price %></h3>
+				<h3>販売ステータス</h3>
+				<h3><%= f.select :sale_status, Product.sale_statuses.keys %></h3>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-8">
+			<tr><%= f.submit '変更を保存' %></tr>
+		</div>
+		<% end %>
+	</div>
 </div>
