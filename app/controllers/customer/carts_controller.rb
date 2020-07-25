@@ -8,18 +8,18 @@ class Customer::CartsController < ApplicationController
 		@cart = current_customer.carts.new(cart_params)
 		@carts = current_customer.carts.all
 
-		# 同じ商品IDがあれば合計する
+		# 同じ商品IDがあればアップデートする
 		@carts.each do |cart|
 			if cart.product_id == @cart.product_id
 				new_quantity = cart.product_quantity + @cart.product_quantity
 				cart.update_attribute(:product_quantity, new_quantity)
 				@cart.delete
 			else
-				@cart.save
 			end
 		end
-
+		@cart.save
 		redirect_to carts_path
+		flash[:notice] = "#{@cart.product.name}を#{@cart.product_quantity}追加しました"
 
 		# 同じ商品が別にできてしまう
 		# @cart = Cart.new(cart_params)
@@ -32,16 +32,18 @@ class Customer::CartsController < ApplicationController
 		@cart = Cart.find(params[:id])
 		@cart.destroy
 		redirect_to carts_path
+		flash[:notice] = "#{@cart.product.name}を削除しました"
 	end
 
 	def update
 		@carts = current_customer.carts
 		@cart = Cart.find(params[:id])
 		if @cart.update(cart_params)
-			redirect_to carts_path,notice: "#{@cart.product.name}の数量を変更しました"
+			flash[:notice] = "#{@cart.product.name}の数量を変更しました"
+			redirect_to carts_path
 		else
+			flash[:alert] = "再度入力をお願いします"
 			render :index
-			flash.now[:alert] = "再度変更をお願いします"
 		end
 	end
 
@@ -49,6 +51,7 @@ class Customer::CartsController < ApplicationController
 		@carts = current_customer.carts
 		@carts.destroy_all
 		redirect_to carts_path
+		flash[:notice] = "カート商品を全て削除しました"
 	end
 
 

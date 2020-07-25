@@ -15,6 +15,9 @@ class Customer::ProductsController < ApplicationController
     def show
     	@product = Product.find(params[:id])
         @cart = Cart.new
+
+        # genre一覧（無効のものは表示しない）
+        @genres = Genre.where(genre_status: true)
     end
 
 private
