@@ -1,18 +1,20 @@
 <div class="row">
 
+
     <div class="col-xs-3">
+        <%= render 'customer/products/search', genres: @genres %>
     </div>
 
-    <div class="col-xs-9">
-        <div class="top_image">
 
-            <div class="top_image2">
+    <div class="col-xs-9">
+
+        <div class="top_image">
+    　　　　　<div style = "text-align: center">
                 ようこそ、NaganoCakeへ！<br>
                 このサイトは、ケーキ販売のECサイトになります。<br>
                 会員でない方も商品の閲覧はできますが、<br>
                 購入には会員登録が必要になります。
             </div>
-
         </div>
 
 
@@ -32,6 +34,7 @@
                 <% end %>
             </div>
         </div>
+
     </div>
 
 

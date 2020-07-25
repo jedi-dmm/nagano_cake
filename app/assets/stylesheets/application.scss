@@ -13,17 +13,31 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  /*ここを追加*/
-@import "bootstrap";            /*ここを追加*/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 
 .genre_search {
 	color: black
 }
 
+
 .genre_search:hover {
 	color: white;
 	background-color: black;
+}
+
+
+.logo {
+    font-size: 55px;
+    font-family: cursive;
+}
+
+
+.boader {
+	border: solid;
+	border-radius: 8px;
 }
 
 
@@ -32,9 +46,11 @@
 	margin-bottom: 10px;
 }
 
+
 .vertical_center {
 	vertical-align: middle
 }
+
 
 .indent_left {
 	margin-left: 20px;
