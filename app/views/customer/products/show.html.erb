@@ -1,6 +1,10 @@
 <div class="container">
 	 <div class="row">
-	 	<div class="col-sm-3 col-md-offset-4">
+	 	<!-- 検索ジャンル -->
+		<div class="col-sm-3">
+			<%= render 'search',genres: @genres %>
+		</div>
+	 	<div class="col-sm-3">
 	    	<p>画像 <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
 	    	</p>
 	 	</div>
@@ -10,7 +14,7 @@
 	    	<tr></tr>
 	    	<tr>値段 <%= @product.price %></tr>
 	    </div>
-	    <div class="col-md-1"></div>
+	    <div class="col-md-2"></div>
         </div>
       <div class="row">
          <div class="col-sm-4 col-md-offset-4"></div>

@@ -6,11 +6,15 @@
 
 	<div class="col-xs-3 col-xs-offset-4">
 		<!-- 全削除リンク -->
-		<%= link_to "カートを空にする",destroy_carts_path,method: :delete,data: { confirm: 'カートを空にしてよろしいでしょうか?' },class: "btn btn-danger pull-right" %>
+		<%= link_to "カートを空にする",destroy_carts_path,method: :delete,data: { confirm: 'カートを空にしてよろしいでしょうか?' },class: "btn btn-danger pull-right #{ 'disabled' unless @carts.exists? }" %>
 	</div>
 </div>
 
-
+<!-- エラーメッセージの表示 -->
+<div>
+	<%= flash[:flash] %>
+	<%= flash[:alert] %>
+</div>
 
 <!-- カート一覧 -->
 <table class="table table-hover table-inverse table-bordered">
@@ -28,36 +32,36 @@
 		<% sum = 0 %>
 		<!-- cartの一覧 -->
 		<% @carts.each do |cart| %>
-			<tr>
-				<td><%= cart.product.name %></td>
-				<td>¥<%= ((cart.product.price)*Constants::TAX_RATE).round.to_s(:delimited) %></td>
-				<td>
-					<div id="product_quantity_edit">
-						<%= form_for(cart,url: cart_path(cart)) do |f| %>
-						<%= f.text_field :product_quantity, value: cart.product_quantity,:size => "2*2" %>
-						<%= f.submit '変更',class: "btn btn-primary" %>
-						<% end %>
-					</div>
-				</td>
-				<td>
-					<!-- 小計 -->
-					<% sub_total = ((cart.product.price*cart.product_quantity)*Constants::TAX_RATE).round %>
-					<label>¥</label>
-					<%= sub_total.to_s(:delimited) %>
+		<tr>
+			<td>
+				<%= attachment_image_tag(cart.product, :image,:fill, 50, 50, fallback: "no_image.jpg") %>
+				<%= cart.product.name %>
+			</td>
+			<td>¥<%= ((cart.product.price)*Constants::TAX_RATE).round.to_s(:delimited) %></td>
+			<td>
+				<div id="product_quantity_edit">
+					<%= form_for(cart,url: cart_path(cart)) do |f| %>
+					<%= f.text_field :product_quantity, value: cart.product_quantity,:size => "2*2" %>
+					<%= f.submit '変更',class: "btn btn-primary" %>
+					<% end %>
+				</div>
+			</td>
+			<td>
+				<!-- 小計 -->
+				<% sub_total = ((cart.product.price*cart.product_quantity)*Constants::TAX_RATE).round %>
+				<label>¥</label>
+				<%= sub_total.to_s(:delimited) %>
 
-					<!-- 合計の計算 -->
-					<% sum += sub_total %>
-				</td>
-				<td>
-					<%= link_to "削除する",cart_path(cart),method: :delete,data: { confirm: '削除してもよろしいでしょうか?' },class: "btn btn-danger col-xs-offset-3 col-xs-6" %>
-				</td>
-			</tr>
+				<!-- 合計の計算 -->
+				<% sum += sub_total %>
+			</td>
+			<td>
+				<%= link_to "削除する",cart_path(cart),method: :delete,data: { confirm: '削除してもよろしいでしょうか?' },class: "btn btn-danger col-xs-offset-3 col-xs-6" %>
+			</td>
+		</tr>
 		<% end %>
 	</tbody>
 </table>
-
-
-
 <div class="row">
 	<div class="col-xs-3">
 		<%= link_to "買い物を続ける", products_path,class: "btn btn-primary" %>
@@ -79,6 +83,6 @@
 
 <div class="row">
 	<div class="col-xs-2 col-xs-offset-5">
-		<%= link_to "情報入力に進む",new_order_path,class: "btn btn-success" %>
+		<%= link_to "情報入力に進む",new_order_path,class: "btn btn-success #{ 'disabled' unless @carts.exists? }" %>
 	</div>
 </div>
