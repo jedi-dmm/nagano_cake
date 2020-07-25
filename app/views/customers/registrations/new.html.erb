@@ -1,71 +1,92 @@
-<div class="container-fluid registration py-5">
-  <div class="row">
-    <div class="offset-2">
-      <h2 class="red-border px-3">アカウントを作成</h2>
-    </div>
-  </div>
+<div class="container">
+  <h2>新規会員登録</h2>
+  <br><br>
 
-  <div class="row mt-3">
-    <div class="offset-4 col-4">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal customer-registration-form", novalidate: "novalidate" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="form-group">
-        <%= f.label :お名前, class: "brown-border px-3" %>
+
+        <div class="form-group">
+      <%= f.label "氏名", class: "col-xs-2 control-label　text-left" %>
         <div class="row">
-          <%= f.text_field :last_name, placeholder:"姓 例）長野", class: "form-control offset-1 col-5" %>
-          <%= f.text_field :first_name, placeholder:"名 例）恵子", class: "form-control offset-1 col-5" %>
+          <div class="col-xs-1 "><strong class="text-righ">（性）</strong></div>
+          <div class="col-xs-2 c_r_last_name_field">
+            <%= f.text_field :last_name, class:"form-control", placeholder: "長野" %>
+          </div>
+          <div class="col-xs-1 "><strong class="text-righ">（名）</strong></div>
+          <div class="col-xs-2 c_r_first_name_field">
+            <%= f.text_field :first_name, class:"form-control", placeholder: "景樹" %>
+          </div>
         </div>
-        <div class="row">
-          <%= f.text_field :last_name_kana, placeholder:"セイ 例）ナガノ", class: "form-control offset-1 col-5" %>
-          <%= f.text_field :first_name_kana, placeholder:"メイ 例）ケイコ", class: "form-control offset-1 col-5" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :郵便番号, class: "brown-border px-3" %>
-        <%= f.text_field :postcode, placeholder:"例）1510001", class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :住所, class: "brown-border px-3" %>
-        <%= f.text_field :address, class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :電話番号, class: "brown-border px-3" %>
-        <%= f.text_field :tel, placeholder:"例）08032436501", class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :メールアドレス, class: "brown-border px-3" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"例）example@mail", class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :パスワード, class: "brown-border px-3" %>
-        <%= f.password_field :password, placeholder:"最低６文字必要です。", autocomplete: "new-password", class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :パスワード確認, class: "brown-border px-3" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control offset-1 col-11" %>
-      </div>
-
-      <div class="row">
-        <%= f.submit "会員登録", class: "btn btn-lg btn-danger mx-auto" %>
-      </div>
-    <% end %>
-
-  </div>
-</div>
-
-  <div class="row">
-    <div class="offset-9">
-      <%= link_to "会員の方はこちらからログイン", new_session_path(resource_name), class: "btn btn-sm btn-outline-danger" %>
     </div>
+
+    <div class="form-group">
+      <%= f.label "フリガナ", class: "col-xs-2 control-label　text-left" %>
+        <div class="row">
+          <div class="col-xs-1 "><strong class="text-righ">（セイ）</strong></div>
+          <div class="col-xs-2 c_r_last_name_kana_field">
+            <%= f.text_field :last_name_kana, class:"form-control", placeholder: "ナガノ" %>
+          </div>
+          <div class="col-xs-1 "><strong class="text-righ">（性）</strong></div>
+          <div class="col-xs-2 c_r_first_name_kana_field">
+            <%= f.text_field :first_name_kana, class:"form-control", placeholder: "ケイキ" %>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <%= f.label "郵便番号（ハイフンなし）", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-2">
+        <%= f.text_field :postcode, class:"form-control", placeholder: "1234567" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "住所", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-6">
+        <%= f.text_field :address, class:"form-control", placeholder: "東京都六本木一丁目コーポ山下603" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "電話番号（ハイフンなし）", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-2">
+        <%= f.text_field :tel, class:"form-control", placeholder: "08012341234" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "メールアドレス", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-2">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "nagano@example.co.jp" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "パスワード", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-2">
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "パスワード（6文字以上）" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "パスワード（確認）", class: "col-xs-3 control-label　text-left" %>
+      <div class="col-xs-2">
+        <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder:  "パスワードの確認" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-5 col-xs-10">
+        <%= f.submit "新規登録", class:"btn btn-success btn-default btn-lg " %>
+      </div>
+    </div>
+
+      <h3>既に登録済みの方</h3>
+        <div class="row">
+          <div class="offset-col-xs-1"></div>
+          <span><%= link_to "こちら", new_session_path(resource_name), class: "btn btn-sm btn-outline-danger" %>
+      <% end %>
+      からログインしてください。</span>
   </div>
-
-
 </div>
-</div>
+

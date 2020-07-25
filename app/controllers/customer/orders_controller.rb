@@ -1,6 +1,7 @@
 class Customer::OrdersController < ApplicationController
 	before_action :authenticate_customer!
 	before_action :ensure_correct_customer, only: [:show]
+	before_action :ensure_carts_exist, only: [:new ,:confirm]
 
 	def index
 		@orders = Order.where(customer_id: current_customer.id).order(created_at: "DESC")
@@ -82,10 +83,20 @@ class Customer::OrdersController < ApplicationController
     end
 
 	def ensure_correct_customer
-		@order = Order.find(params[:id])
-		unless @order.customer_id == current_customer.id
-			redirect_to customer_path(current_customer)
+		unless Order.exists?(id: params[:id])						# 一致するorderが存在しない場合
+			redirect_to customer_path(current_customer)				# カスタマー画面へリダイレクト
+		else
+			@order = Order.find(params[:id])
+			unless @order.customer_id == current_customer.id		# 取得したorderが他人のものであった場合
+				redirect_to customer_path(current_customer)			# カスタマー画面へリダイレクト
+			end
 		end
 	end
 
+	def ensure_carts_exist
+		@carts = Cart.where(customer_id: current_customer.id)
+		if @carts.blank?
+			redirect_to products_path
+		end
+	end
 end

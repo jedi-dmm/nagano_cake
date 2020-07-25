@@ -7,7 +7,6 @@ class Post < ApplicationRecord
   validates :customer_id, presence: true
   validates :address, presence: true
   validates :name, presence: true
-
   validates :postcode, presence: true, format: { with: VALID_POSTCODE,message: "はハイフンなし7桁で入力してください。"}
 
   	def view_post_full

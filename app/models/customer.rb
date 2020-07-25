@@ -11,7 +11,9 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
 
 
-
+  def active_for_authentication?
+    super && (self.customer_status == true)
+  end
 
 
   validates :last_name,  presence: true

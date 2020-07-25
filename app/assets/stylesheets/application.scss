@@ -15,11 +15,27 @@
  */
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
+
+
+.genre_search {
+	color: black
+}
+
+.genre_search:hover {
+	color: white;
+	background-color: black;
+}
+
+
 .post_form {
 	margin-left: 20px;
 	margin-bottom: 10px;
 }
 
-.vertical-center {
+.vertical_center {
 	vertical-align: middle
+}
+
+.indent_left {
+	margin-left: 20px;
 }

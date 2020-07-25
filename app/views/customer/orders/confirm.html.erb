@@ -6,13 +6,13 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-8">
-			<table class="table">
+			<table class="table table-inverse table-bordered">
 				<thead>
-					<tr>
-						<th>商品</th>
-						<th>単価（税込）</th>
-						<th>数量</th>
-						<th>小計</th>
+					<tr class="active">
+						<th class="col-xs-6">商品</th>
+						<th class="col-xs-2">単価（税込）</th>
+						<th class="col-xs-2">数量</th>
+						<th class="col-xs-2">小計</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -22,26 +22,27 @@
 			            <td><%= cart.product.name %></td>
 			            <td>
 			            	<% unit_price = cart.product.price * Constants::TAX_RATE %>
-			            	<%= unit_price.round %>
+			            	<%= (unit_price.round).to_s(:delimited) %>
 			            </td>
 			            <td><%= cart.product_quantity %></td>
 			            <td>
-			            	<%= (unit_price * cart.product_quantity).round %>
+			            	<% sub_total = (unit_price * cart.product_quantity).round %>
+			            	<%= sub_total.to_s(:delimited) %>
 			            </td>
 			        </tr>
 			        <% end %>
 		        </tbody>
 		    </table>
 		</div>
-		<div class="col-xs-4">
-			<table class="table">
+		<div class="col-xs-3">
+			<table class="table table-inverse table-bordered">
 				<tbody>
 					<tr>
-						<td>送料</td>
-						<td><%= Constants::POSTAGE %></td>
+						<td class="active">送料</td>
+						<td><%= (Constants::POSTAGE).to_s(:delimited) %></td>
 					</tr>
 					<tr>
-						<td>商品合計</td>
+						<td class="active col-xs-4">商品合計</td>
 						<td>
 							<% total_fee = 0 %>
 							<% current_customer.carts.each do |cart| %>
@@ -49,13 +50,13 @@
 								<% sub_total = unit_price * cart.product_quantity %>
 								<% total_fee += sub_total %>
 							<% end%>
-								<%= total_fee %>
+								<%= total_fee.to_s(:delimited) %>
 						</td>
 					</tr>
 					<tr>
-						<td>請求金額</td>
+						<td class="active">請求金額</td>
 						<td>
-							<%= total_fee + Constants::POSTAGE %>
+							<%= (total_fee + Constants::POSTAGE).to_s(:delimited) %>
 						</td>
 					</tr>
 		        </tbody>
@@ -82,18 +83,14 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12">
-			<%= form_for @order do |f| %>
-			  <div class="actions">
-			  	<%= f.hidden_field :customer_id %>
-			  	<%= f.hidden_field :payment %>
-			  	<%= f.hidden_field :postcode %>
-			  	<%= f.hidden_field :address %>
-			  	<%= f.hidden_field :name %>
-			  	<%= f.hidden_field :postage %>
-			    <%= f.submit '購入を確定する' %>
-			  </div>
-			<% end %>
-		</div>
+		<%= form_for @order do |f| %>
+				<%= f.hidden_field :customer_id %>
+				<%= f.hidden_field :payment %>
+				<%= f.hidden_field :postcode %>
+				<%= f.hidden_field :address %>
+				<%= f.hidden_field :name %>
+				<%= f.hidden_field :postage %>
+				<%= f.submit '購入を確定する', :class => 'btn btn-primary col-xs-4 col-xs-offset-4'%>
+		<% end %>
 	<div>
 </div>

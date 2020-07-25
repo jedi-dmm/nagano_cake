@@ -1,104 +1,106 @@
-<div class="container">
-	<div class="row">
-		<div>
-			<h3>注文履歴詳細</h3>
-		</div>
+<div class="row">
+	<div>
+		<h3>注文履歴詳細</h3>
 	</div>
+</div>
 
-	<div class="row">
-		<div class="col-xs-6">
-			<table>
-				<tbody>
-					<tr>
-						<td>購入者</td>
-						<td><%= @order.customer.last_name + @order.customer.first_name %></td>
-					</tr>
-					<tr>
-						<td>配送先</td>
-						<td class="break">
-							<p>
-								<%= @order.postcode %>
-								<%= @order.address %>
-							</p>
-							<p>
-								<%= @order.name %>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td>支払方法</td>
-						<td><%= @order.payment %></td>
-					</tr>
-					<tr>
-						<td>注文ステータス</td>
-						<td>
-							<%= form_for(@order,url: admin_order_path(@order)) do |f| %>
-							<%= f.select :order_status, Order.order_statuses.keys, :selected=>@order.order_status %>
-							<%= f.submit "更新" %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-8">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>商品</th>
-						<th>単価（税込）</th>
-						<th>数量</th>
-						<th>小計</th>
-						<th>製作ステータス</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @order.order_products.each do |order_product| %>
-					<tr>
-						<td><%= order_product.product.name %></td>
-						<td><p><%= order_product.unit_price %>円</p></td>
-						<td><%= order_product.product_quantity %></td>
-						<td>
-							<p><%= order_product.unit_price * order_product.product_quantity %>円</p>
-						</td>
-						<td>
-							<%= form_for(order_product,url: admin_order_product_path(order_product)) do |f| %>
-							<%= f.select :production_status, OrderProduct.production_statuses.keys, :selected=>order_product.production_status %>
-							<%= f.submit "更新" %>
-							<% end %>
-						</td>
-					</tr>
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th class="col-xs-2"></th>
+				<th class="col-xs-10"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>購入者</td>
+				<td><%= @order.customer.last_name + @order.customer.first_name %></td>
+			</tr>
+			<tr>
+				<td>配送先</td>
+				<td class="break">
+					<p>
+						<%= @order.postcode %>
+						<%= @order.address %>
+					</p>
+					<p>
+						<%= @order.name %>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>支払方法</td>
+				<td><%= @order.payment %></td>
+			</tr>
+			<tr>
+				<td>注文ステータス</td>
+				<td>
+					<%= form_for(@order,url: admin_order_path(@order)) do |f| %>
+					<%= f.select :order_status, Order.order_statuses.keys, :selected=>@order.order_status %>
+					<%= f.submit "更新" %>
 					<% end %>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-xs-4">
-			<table class="table">
-				<tbody>
-					<tr>
-						<td>商品合計</td>
-						<td class="vertical-center">
-							<% total_fee = 0 %>
-							<% @order.order_products.each do |order_product| %>
-								<% sub_total = order_product.unit_price * order_product.product_quantity %>
-								<% total_fee += sub_total %>
-							<% end%>
-							<p><%= total_fee %>円</p>
-						</td>
-					</tr>
-					<tr>
-						<td>配送料</td>
-						<td><p><%= @order.postage %>円</p></td>
-					</tr>
-					<tr>
-						<td>ご請求額</td>
-						<td><p><%= total_fee + @order.postage %>円</p></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>商品</th>
+					<th>単価（税込）</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>製作ステータス</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @order.order_products.each do |order_product| %>
+				<tr>
+					<td><%= order_product.product.name %></td>
+					<td><p><%= order_product.unit_price %>円</p></td>
+					<td><%= order_product.product_quantity %></td>
+					<td>
+						<p><%= order_product.unit_price * order_product.product_quantity %>円</p>
+					</td>
+					<td>
+						<%= form_for(order_product,url: admin_order_product_path(order_product)) do |f| %>
+						<%= f.select :production_status, OrderProduct.production_statuses.keys, :selected=>order_product.production_status %>
+						<%= f.submit "更新" %>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-xs-4">
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>商品合計</td>
+					<td class="vertical-center">
+						<% total_fee = 0 %>
+						<% @order.order_products.each do |order_product| %>
+						<% sub_total = order_product.unit_price * order_product.product_quantity %>
+						<% total_fee += sub_total %>
+						<% end%>
+						<p><%= total_fee %>円</p>
+					</td>
+				</tr>
+				<tr>
+					<td>配送料</td>
+					<td><p><%= @order.postage %>円</p></td>
+				</tr>
+				<tr>
+					<td>ご請求額</td>
+					<td><p><%= total_fee + @order.postage %>円</p></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </div>

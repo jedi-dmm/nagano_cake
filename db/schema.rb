@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_032323) do
     t.string "postcode"
     t.string "address"
     t.string "tel"
-    t.boolean "customer_status"
+    t.boolean "customer_status", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

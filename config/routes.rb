@@ -21,14 +21,14 @@ Rails.application.routes.draw do
 	  get 'customers/leave' => 'customer/customers#leave', as: 'leave'
 	  patch 'customers/hide' => 'customer/customers#hide', as: 'hide'
 
+
 	scope module: :customer do
 	    resources :products, only: [:show, :index]
 	    resources :carts, only: [:index, :create, :destroy, :update]
 	    resources :orders, only: [:show, :index, :new, :create]
 	    resource :customer, only: [:show]
-	    resource :posts, only: [:show, :create, :edit, :destroy, :update]
+	    resources :posts, only: [:index, :create, :edit, :destroy, :update]
 	end
-
 
 
 	namespace :admin do

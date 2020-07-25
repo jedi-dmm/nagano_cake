@@ -1,11 +1,11 @@
 class Customer::PostsController < ApplicationController
 
 
-  def new
-  end
+  before_action :authenticate_customer!
+  before_action :correct_customer, only: [:edit, :update]
 
 
-  def show
+  def index
     @post = Post.new
     @posts = Post.all
   end
@@ -25,7 +25,7 @@ class Customer::PostsController < ApplicationController
     else
        @customer = current_customer
        @posts = Post.all
-       render :show
+       render :index
     end
   end
 
@@ -40,9 +40,10 @@ class Customer::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @post.customer_id = current_customer.id
     if @post.update(post_params)
        flash[:notice] = "配送先を編集しました。"
-       redirect_to posts_path(current_customer)
+       redirect_to posts_path
     else
       render "edit"
     end
