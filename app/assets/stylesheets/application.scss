@@ -13,15 +13,123 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  /*ここを追加*/
-@import "bootstrap";            /*ここを追加*/
 
 
-.genre_search {
-	color: black
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.logo {
+    font-size: 55px;
+    font-family: cursive;
 }
 
-.genre_search:hover {
+.logo a {
 	color: white;
-	background-color: black;
+}
+
+.logo a:hover {
+	color: black;
+	background-color: white;
+}
+
+
+.boader {
+	border: solid;
+	border-radius: 8px;
+}
+
+
+.post_form {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+
+.vertical_center {
+	vertical-align: middle;
+}
+
+
+.indent_left {
+	margin-left: 20px;
+}
+
+
+/*追加*/
+
+
+header {
+	background-color :#8b0000;
+}
+
+
+body {
+	background-color: #ffffff;
+}
+
+.text-color {
+	color: white;
+}
+
+.text-color a{
+	color: white;
+}
+
+a {
+	color: black;
+}
+
+
+a:hover {
+	color: black;
+	background-color :#faebd7;
+}
+
+.btn-primary {
+	background: #a52a2a;
+	color: white;
+	border: none;
+}
+
+
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus{
+  background-color: #cd5c5c !important;
+  border: none !important;
+  outline: none;
+}
+
+
+.btn-danger {
+	background: #d3d3d3;
+	color: black;
+	border: none;
+}
+
+.btn-danger:hover,.btn-danger:focus,
+.btn-danger:active, .btn-danger:active:focus{
+	background: #d3d3d3 !important;
+	color: #ff0000;
+	border: none !important;
+	outline: none;
+}
+
+.btn-success {
+	background: #ffffff;
+	color: #000000;
+	border-color:#000000;
+}
+
+.btn-success:hover,.btn-success:focus,
+.btn-success:active, .btn-success:active:focus{
+	background: #dcdcdc !important;
+	color: #000000 !important;
+	border: none;
+	outline: none;
+}
+
+.page-title {
+	margin: 0 0 20px 20px;
 }

@@ -9,20 +9,26 @@
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <!-- 非同期通信を行うためのファイル指定 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript"></script>
     </head>
 
 
     <body>
-        <header class="navbar">
+        <header class="navbar navbar-fixed-top">
             <div class="container">
 
+
                 <nav class="nav navbar-nav navbar-left">
-                    <h1>Nagano Cake</h1>
+                    <div class="logo">
+                        <%=link_to 'Nagano Cake', root_path %>
+                    </div>
                 </nav>
 
 
                 <nav>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right text-color">
                         <% if customer_signed_in? %>
                             <li>ようこそ、<%= current_customer.full_name %>さん！</li>
                             <li><%= link_to ' マイページ', customer_path(current_customer) %></li>
@@ -44,14 +50,18 @@
                     </ul>
                 </nav>
 
+
+                </div>
             </div>
         </header>
 
 
         <div class="container">
 
-            <% flash.each do |msg_class, msg| %>
-                <p id="notice"><%= notice %></p>
+            <% if flash[:notice] %>
+                <div class="alert alert-success"><%= flash[:notice]%></div>
+            <% elsif flash[:alert] %>
+                <div class="alert alert-danger"><%= flash[:alert] %></div>
             <% end %>
 
 　　　　　　　<div class= "container">

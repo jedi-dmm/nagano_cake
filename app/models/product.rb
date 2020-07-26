@@ -1,6 +1,11 @@
 class Product < ApplicationRecord
 	belongs_to :genre
 
+	enum sale_status:{
+		 販売中:   true,
+		 売り切れ:  false
+		}
+
 	has_many :order_products, dependent: :destroy
 	has_many :carts, dependent: :destroy
 
@@ -9,7 +14,7 @@ class Product < ApplicationRecord
     validates :genre_id, presence: true
 	validates :name, presence: true, uniqueness: true
 	validates :caption, presence: true
-	validates :image_id, presence: true
+	validates :image, presence: true
 	validates :price, numericality: true
-	validates :sale_status, inclusion: { in: [true, false] }
+	validates :sale_status, presence:true
 end

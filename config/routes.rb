@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 	  get 'customers/leave' => 'customer/customers#leave', as: 'leave'
 	  patch 'customers/hide' => 'customer/customers#hide', as: 'hide'
 
-
 	scope module: :customer do
 	    resources :products, only: [:show, :index]
 	    resources :carts, only: [:index, :create, :destroy, :update]
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
 	    resources :products, only: [:new, :show, :index, :edit, :create, :update]
 	    resources :order_products, only: [:update]
 	end
+
 
     get 'admins/home/top' => 'admin/homes#top', as: 'admin_top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
