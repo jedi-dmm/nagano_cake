@@ -10,7 +10,39 @@
 
 
 .body {
-    font-family:fantasy;
+    font-family: fantasy;
 }
 
 
+.top_image {
+    margin: 30px;
+	padding: 70px;
+	width: 600px;
+	background-size: cover;
+	background-color: #FAEBD7;
+}
+
+
+.style_top {
+	text-align: center;
+	padding: 30px;
+	background-color: white;
+}
+
+
+.style_about {
+	text-align: center;
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.about {
+	margin: 70px;
+	padding: 150px;
+	border:  2px solid #000000;
+}

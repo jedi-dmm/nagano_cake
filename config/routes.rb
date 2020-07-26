@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 	    resources :products, only: [:show, :index]
 	    resources :carts, only: [:index, :create, :destroy, :update]
 	    resources :orders, only: [:show, :index, :new, :create]
-	    resource :customer, only: [:show]
+	    resource :customer, only: [:show, :edit, :update]
 	    resources :posts, only: [:index, :create, :edit, :destroy, :update]
 	end
 
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 	    resources :products, only: [:new, :show, :index, :edit, :create, :update]
 	    resources :order_products, only: [:update]
 	end
+
 
     get 'admins/home/top' => 'admin/homes#top', as: 'admin_top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

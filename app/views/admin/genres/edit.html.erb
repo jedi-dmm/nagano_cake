@@ -1,4 +1,4 @@
-<h4>ジャンル編集</h4>
+<h2>ジャンル編集</h2>
 
 <%= form_for(@genre,url:admin_genre_path) do |f| %>
 	<!-- 入力ボックス -->
@@ -6,9 +6,9 @@
 	<%= f.text_field :name %>
 	<!-- ラジオボタン  -->
 	<%= f.radio_button :genre_status,:true %>
-	<%= f.label :genre_status,"有効" %>
+	<%= f.label :genre_status,"有効",value: true%>
 	<%= f.radio_button :genre_status,:false %>
-	<%= f.label :genre_status,"無効" %>
+	<%= f.label :genre_status,"無効",value: false %>
 	<!-- 追加ボタン -->
 	<%= f.submit '変更を保存する',class: "btn btn-primary" %>
 <% end %>

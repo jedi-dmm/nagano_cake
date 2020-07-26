@@ -8,31 +8,31 @@
 
 Customer.create!(
                   customer_status: "true",
-                  last_name: "麻生",
+                  last_name: "阿部",
                   first_name: "太郎",
-                  last_name_kana: "アソウ",
+                  last_name_kana: "アベ",
                   first_name_kana: "タロウ",
                   tel: "00000000000",
                   email: "test@test.jp",
                   password: "password",
                   postcode: "0000000",
-                  address: "東京都  歌舞伎町3丁目",
+                  address: "東京都  品川区",
                   )
 
 Customer.create!(
                   customer_status: "false",
-                  last_name: "阿部",
-                  first_name: "心臓",
+                  last_name: "佐藤",
+                  first_name: "次郎",
                   last_name_kana: "アベ",
-                  first_name_kana: "シンゾウ",
+                  first_name_kana: "ジロウ",
                   tel: "00000000001",
                   email: "aa@test.jp",
                   password: "password",
                   postcode: "0000001",
-                  address: "東京都  歌舞伎町1丁目",
+                  address: "神奈川県　川崎市",
                   )
 
 Admin.create!(
-                  email: "aaddmmiinn@test.jp",
+                  email: "admin@test.jp",
                   password: "password",
                   )

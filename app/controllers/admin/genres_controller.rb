@@ -27,8 +27,8 @@ class Admin::GenresController < ApplicationController
   		redirect_to admin_genres_path
       flash[:notice] = "#{@genre.name}のステータスを変更しました"
   	else
+      redirect_to admin_genres_path
       flash[:alert] = "再度入力してください"
-  		render :edit
   	end
   end
 

@@ -1,0 +1,87 @@
+<div class="ec-customers-edit-main">
+  <div class="container ">
+    <div class="row">
+      <div class="row">
+        <div class="col-xs-3">
+          <h2 class="">登録情報編集</h2>
+        </div>
+      </div>
+
+
+
+    <%= form_for(@customer) do |f| %>
+
+            <div class="form-group">
+              <%= f.label "氏名", class: "col-xs-1 control-label　text-left" %>
+                <div class="row">
+                  <div class="col-xs-1 "><strong class="text-righ">（性）</strong></div>
+                  <div class="col-xs-2 c_r_last_name_field">
+                    <%= f.text_field :last_name, class:"form-control", placeholder: "長野" %>
+                  </div>
+                  <div class="col-xs-1 test-right"><strong>（名）</strong></div>
+                  <div class="col-xs-2 c_r_first_name_field">
+                    <%= f.text_field :first_name, class:"form-control", placeholder: "景樹" %>
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "フリガナ", class: "col-xs-1 control-label　text-left" %>
+                <div class="row">
+                  <div class="col-xs-1 test-right"><strong>（セイ）</strong></div>
+                  <div class="col-xs-2 c_r_kana_last_name_field">
+                    <%= f.text_field :last_name_kana, class:"form-control", placeholder: "ナガノ" %>
+                  </div>
+                  <div class="col-xs-1 test-right"><strong>（メイ）</strong></div>
+                  <div class="col-xs-2 c_r_kana_first_name_field">
+                    <%= f.text_field :first_name_kana, class:"form-control", placeholder: "ケイキ" %>
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "メールアドレス", class: "col-xs-2 control-labeltext-left" %>
+              <div class="row">
+              <div class="col-xs-2">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "nagano@example.co.jp" %>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "郵便番号", class: "col-xs-2 control-label　text-left" %>
+              <div class="row">
+              <div class="col-xs-2">
+                <%= f.text_field :postcode, class:"form-control", placeholder: "750-3939" %>
+              </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "住所", class: "col-xs-2 control-labeltext-left" %>
+              <div class="row">
+              <div class="col-xs-5">
+                <%= f.text_field :address, class:"form-control", placeholder: "東京都六本木一丁目コーポ山下603" %>
+              </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label "電話番号", class: "col-xs-2 control-labeltext-left" %>
+              <div class="row">
+              <div class="col-xs-2">
+                <%= f.text_field :tel, class:"form-control", placeholder: "090-0750-4649" %>
+              </div>
+            </div>
+            </div>
+
+
+        <div class="ec-edit-registration-btn-wrap col-xs-offset-1 col-xs-10", style= "padding-left: 0px">
+          <div class="col-xs-4"> <%= f.submit "編集内容を保存する", class:"btn btn-primary", style: "width: 12em" %>
+      <% end %></div>
+          <div class="col-xs-2"> <%= link_to "退会する" ,leave_path, class: "btn btn-danger" %></div>
+    </div>
+  </div>
+  </div>
+</div>
+    
