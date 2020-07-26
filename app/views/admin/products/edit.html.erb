@@ -1,11 +1,12 @@
 <div class="container">
 	<div class="row">
-		<h2>商品編集</h2>
-		<div class="col-md-2">
-			<th></th>
+		<div class="col-md-offset-2">
+			<h2>商品編集</h2>
 		</div>
-		<div class="col-md-3">
-			<th><%= form_for(@product, url: admin_product_path) do |f| %></th>
+	</div>
+	   <%= form_for(@product, url: admin_product_path) do |f| %>
+	<div class="row">
+		<div class="col-md-3 col-md-offset-2">
 			<% if @product.errors.any? %>
 			<div id="error_explanation" class="alert alert-danger">
 				<h3><%= @product.errors.count %>error prohibited this obj from being saved:</h3>
@@ -16,24 +17,21 @@
 				</ul>
 			</div>
 			<% end %>
-			<h3></h3>
-			<tr>ファイル選択 <%= f.attachment_field :image %></tr>
+			<p>ファイル選択 <%= f.attachment_field :image %></p>
 		</div>
 		<div class="col-md-6">
-			<table class="table table-bordered">
-				<h3>商品名   <%= f.text_field :name %></h3>
-				<h3>商品説明  <%= f.text_area :caption %></h3>
-				<h3>ジャンル   <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
-				<h3>税抜価格   <%= f.number_field :price %></h3>
-				<h3>販売ステータス</h3>
-				<h3><%= f.select :sale_status, Product.sale_statuses.keys %></h3>
-			</table>
+			<h3>商品名   <%= f.text_field :name %></h3>
+			<h3>商品説明  <%= f.text_area :caption %></h3>
+			<h3>ジャンル   <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
+			<h3>税抜価格   <%= f.number_field :price %></h3>
+			<h3>販売ステータス</h3>
+			<h3><%= f.select :sale_status, Product.sale_statuses.keys %></h3>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-8">
-			<tr><%= f.submit '変更を保存' %></tr>
+			<p><%= f.submit '変更を保存' %></p>
 		</div>
-		<% end %>
 	</div>
+	<% end %>
 </div>
