@@ -12,7 +12,7 @@ class Customer::CustomersController < ApplicationController
 	def update
 		@customer = Customer.find(current_customer.id)
 		if @customer.update(customer_params)
-			render :show
+			redirect_to customer_path
 		else
 			render :edit
 		end
