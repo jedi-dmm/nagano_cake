@@ -3,7 +3,7 @@
 		<h3>注文履歴一覧</h3>
 	</div>
 	<div>
-		<table class="table table-hover table-inverse table-bordered">
+		<table class="table table-hover table-bordered">
 			<thead>
 				<tr class="active">
 					<th  class="col-xs-1">注文日</th>
@@ -38,7 +38,7 @@
 					</td>
 					<td class="vertical-center"><%= order.order_status %></td>
 					<td class="vertical-center">
-						<%= link_to "表示する",order_path(order),class: "btn btn-success" %>
+						<%= link_to "表示する",order_path(order),class: "btn btn-primary" %>
 					</td>
 				</tr>
 				<% end %>

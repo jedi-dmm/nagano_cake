@@ -20,9 +20,9 @@ class Admin::OrdersController < ApplicationController
 	    	end
 	    	redirect_to admin_order_path(@order), notice: "注文ステータスと製作ステータスを更新しました."
 	    	# 未制作の商品があるか確認し、なければ注文ステータスを更新。
-	    elsif @order.order_status == "製作中" && params[:order][:order_status] == "発送準備中"
+	    elsif params[:order][:order_status] == "発送準備中"
 	    	if @order.order_products.where.not(production_status: "製作完了").exists?
-	    		redirect_to admin_order_path(@order), notice: "未製作の商品があります. 製作を完了してください."
+	    		redirect_to admin_order_path(@order), alert: "未製作の商品があります. 先にすべての商品の製作を完了してください."
 	    	else
 	    		@order.update(order_params)
 	    		redirect_to admin_order_path(@order), notice: "注文ステータスを更新しました."

@@ -26,7 +26,7 @@
 
 
                 <nav>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right text-color">
                         <% if customer_signed_in? %>
                             <li>ようこそ、<%= current_customer.full_name %>さん！</li>
                             <li><%= link_to ' マイページ', customer_path(current_customer) %></li>
@@ -55,9 +55,13 @@
 
         <div class="container">
 
-            <% flash.each do |msg_class, msg| %>
-                <p id="notice"><%= notice %></p>
-            <% end %>
+        <!-- エラーメッセージの表示 -->
+        <% if flash[:notice] %>
+            <div class="alert alert-success"><%= flash[:notice]%></div>
+        <% elsif flash[:alert] %>
+            <div class="alert alert-danger"><%= flash[:alert] %></div>
+        <% end %>
+
 
 　　　　　　　<div class= "container">
                 <%= yield %>
