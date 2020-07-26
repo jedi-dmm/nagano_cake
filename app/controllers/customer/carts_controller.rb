@@ -19,7 +19,7 @@ class Customer::CartsController < ApplicationController
 		end
 		@cart.save
 		redirect_to carts_path
-		flash[:notice] = "#{@cart.product.name}を#{@cart.product_quantity}追加しました"
+		flash[:notice] = "#{@cart.product.name}を#{@cart.product_quantity}個追加しました"
 
 		# 同じ商品が別にできてしまう
 		# @cart = Cart.new(cart_params)
@@ -42,8 +42,8 @@ class Customer::CartsController < ApplicationController
 			flash[:notice] = "#{@cart.product.name}の数量を変更しました"
 			redirect_to carts_path
 		else
+			redirect_to carts_path
 			flash[:alert] = "再度入力をお願いします"
-			render :index
 		end
 	end
 

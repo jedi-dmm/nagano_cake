@@ -1,5 +1,5 @@
 <!-- ページタイトル -->
-<h3>ジャンル一覧・追加</h3>
+<h2>ジャンル一覧・追加</h2>
 
 <div class="col-xs-6">
 	<!-- ジャンル追加 -->
@@ -9,9 +9,9 @@
 		<%= f.text_field :name %>
 		<!-- ラジオボタン  -->
 		<%= f.radio_button :genre_status,:true, checked: true %>
-		<%= f.label :genre_status,"有効" %>
+		<%= f.label :genre_status,"有効",value: true%>
 		<%= f.radio_button :genre_status,:false %>
-		<%= f.label :genre_status,"無効" %>
+		<%= f.label :genre_status,"無効",value: false %>
 		<!-- 追加ボタン -->
 		<%= f.submit '追加',class: "btn btn-primary" %>
 	<% end %>

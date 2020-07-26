@@ -20,31 +20,17 @@
 @import "bootstrap";
 
 
-
-.genre_search {
-	color: black
-}
-
-
-.genre_search:hover {
-	color: white;
-	background-color: black;
-}
-
-
 .logo {
     font-size: 55px;
     font-family: cursive;
 }
 
-
 .logo a {
 	color: white;
 }
 
-
 .logo a:hover {
-    color: black;
+	color: black;
 	background-color: white;
 }
 
@@ -62,13 +48,16 @@
 
 
 .vertical_center {
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 
 .indent_left {
 	margin-left: 20px;
 }
+
+
+/*追加*/
 
 
 header {
@@ -80,16 +69,13 @@ body {
 	background-color: #ffffff;
 }
 
-
 .text-color {
 	color: white;
 }
 
-
 .text-color a{
 	color: white;
 }
-
 
 a {
 	color: black;
@@ -101,7 +87,6 @@ a:hover {
 	background-color :#faebd7;
 }
 
-
 .btn-primary {
 	background: #a52a2a;
 	color: white;
@@ -109,9 +94,11 @@ a:hover {
 }
 
 
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus{
   background-color: #cd5c5c !important;
-  border: 1px solid #cd5c5c !important;
+  border: none !important;
+  outline: none;
 }
 
 
@@ -121,13 +108,13 @@ a:hover {
 	border: none;
 }
 
-
-.btn-danger:hover {
-	background: #d3d3d3;
+.btn-danger:hover,.btn-danger:focus,
+.btn-danger:active, .btn-danger:active:focus{
+	background: #d3d3d3 !important;
 	color: #ff0000;
-	border: none;
+	border: none !important;
+	outline: none;
 }
-
 
 .btn-success {
 	background: #ffffff;
@@ -135,19 +122,14 @@ a:hover {
 	border-color:#000000;
 }
 
-
-.btn-success:hover {
-	background: #dcdcdc;
-	color: #000000;
-	border-color:#000000;
+.btn-success:hover,.btn-success:focus,
+.btn-success:active, .btn-success:active:focus{
+	background: #dcdcdc !important;
+	color: #000000 !important;
+	border: none;
+	outline: none;
 }
-
 
 .page-title {
 	margin: 0 0 20px 20px;
 }
-
-
-.flash-notice {
-	color: red;
-	}
