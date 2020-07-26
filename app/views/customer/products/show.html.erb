@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<th></th>
+			<!-- 検索ジャンル -->
+	 		<%= render 'search',genres: @genres %>
 		</div>
 		<div class="col-md-3">
 			<p><%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
