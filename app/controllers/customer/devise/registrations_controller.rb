@@ -38,7 +38,7 @@ class Customer::Devise::RegistrationsController < Devise::RegistrationsControlle
   #   super
   # end
 
-  protected
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -64,7 +64,5 @@ class Customer::Devise::RegistrationsController < Devise::RegistrationsControlle
 
 
   # ユーザー情報更新後、マイページに遷移させる
-  def after_update_path_for(resource)
-    customer_path
-  end
+
 end

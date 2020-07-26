@@ -5,7 +5,7 @@
       </div><br>
       <div class="row">
         <h2 class=col-xs-2>登録情報</h2>
-        <div class="col-xs-1"><%= link_to '編集する',edit_customer_registration_path, class: "btn btn-primary" %></div>
+        <div class="col-xs-1"><%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-primary" %></div>
         <div class="col-xs-1"><%= link_to 'パスワードを変更する', new_customer_password_path(@customer), class: "btn btn-primary" %>
         </div>
       </div>
