@@ -16,13 +16,13 @@
 
 
     <body>
-        <header class="navbar">
+        <header class="navbar navbar-fixed-top">
             <div class="container">
 
 
                 <nav class="nav navbar-nav navbar-left">
                     <div class="logo">
-                        <%= link_to 'Nagano Cake',root_path %>
+                        <%=link_to 'Nagano Cake', root_path %>
                     </div>
                 </nav>
 
@@ -51,18 +51,18 @@
                 </nav>
 
 
+                </div>
             </div>
         </header>
 
 
         <div class="container">
 
-        <!-- エラーメッセージの表示 -->
-        <% if flash[:notice] %>
-            <div class="alert alert-success"><%= flash[:notice]%></div>
-        <% elsif flash[:alert] %>
-            <div class="alert alert-danger"><%= flash[:alert] %></div>
-        <% end %>
+            <% if flash[:notice] %>
+                <div class="alert alert-success"><%= flash[:notice]%></div>
+            <% elsif flash[:alert] %>
+                <div class="alert alert-danger"><%= flash[:alert] %></div>
+            <% end %>
 
 　　　　　　　<div class= "container">
                 <%= yield %>

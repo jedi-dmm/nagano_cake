@@ -1,14 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<!-- 検索ジャンル -->
-	 		<%= render 'search',genres: @genres %>
+			<%= render 'search',genres: @genres %>
 		</div>
 		<div class="col-md-3">
-			<p><%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
+			<p><%= attachment_image_tag @product, :image, :fill, 280, 210, format: 'jpeg' %>
 			</p>
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<table class="table table-bordered">
 				<h2><%= @product.name %></h2>
 				<h4><%= @product.caption %></h4>

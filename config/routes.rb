@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	    resources :order_products, only: [:update]
 	end
 
+
     get 'admins/home/top' => 'admin/homes#top', as: 'admin_top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

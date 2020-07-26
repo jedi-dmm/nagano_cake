@@ -14,8 +14,11 @@
  *= require_self
  */
 
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 .logo {
     font-size: 55px;
@@ -56,6 +59,7 @@
 
 /*追加*/
 
+
 header {
 	background-color :#8b0000;
 }
@@ -77,6 +81,7 @@ a {
 	color: black;
 }
 
+
 a:hover {
 	color: black;
 	background-color :#faebd7;
@@ -95,8 +100,6 @@ a:hover {
   border: none !important;
   outline: none;
 }
-
-
 
 
 .btn-danger {

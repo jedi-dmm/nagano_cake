@@ -20,7 +20,7 @@
               <td><%= product.id %></td>
               <td><%= link_to product.name, admin_product_path(product.id) %></td>
               <td><%= product.price %></td>
-              <td><%= product.genre.id %></td>
+              <td><%= product.genre.name %></td>
               <td><%= product.sale_status %></td>
             </tr>
           <% end %>
