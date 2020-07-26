@@ -1,46 +1,48 @@
-<div class="row">
+<div class="container">
+    <div class="row">
 
 
-    <div class="col-xs-3">
-        <%= render 'customer/products/search', genres: @genres %>
-    </div>
-
-
-    <div class="col-xs-9">
-
-        <div class="top_image">
-    　　　　　<div style = "text-align: center">
-                ようこそ、NaganoCakeへ！<br>
-                このサイトは、ケーキ販売のECサイトになります。<br>
-                会員でない方も商品の閲覧はできますが、<br>
-                購入には会員登録が必要になります。
-            </div>
+        <div class="col-xs-3">
+            <%= render 'customer/products/search', genres: @genres %>
         </div>
 
 
-        <h2>オススメ商品</h2>
-        <div class="row">
-    	    <div id="products">
-                <% @products.each do |product| %>
+        <div class="col-xs-9">
 
-                    <%= link_to product_path(product.id) do %>
-                        <%= attachment_image_tag product, :image, format: 'jpeg', size: "150x150",  fallback: "no_image.jpg"%><br>
-                    <% end %>
-
-                    <p><%= product.name %></p>
-
-                    <p>¥<%= product.price %></p>
-
-                <% end %>
+            <div class="top_image">
+    　　　　     <div class="style_top">
+                    ようこそ、NaganoCakeへ！<br>
+                    このサイトは、ケーキ販売のECサイトになります。<br>
+                    会員でない方も商品の閲覧はできますが、<br>
+                    購入には会員登録が必要になります。
+                </div>
             </div>
+
+
+            <h2>オススメ商品</h2>
+            <div class="row">
+    	        <div id="products">
+                    <div class="menu">
+                        <% @products.each do |product| %>
+                            <div class="col-sm-3">
+                                <%= link_to product_path(product.id) do %>
+                                    <%= attachment_image_tag product, :image, format: 'jpeg', size: "150x150",  fallback: "no_image.jpg"%><br>
+                                    <p><%= product.name %></p>
+                                    <p>¥<%= (product.price*Constants::TAX_RATE).round.to_s(:delimited) %></p>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
+
+        <div class="col-xs-2 col-xs-offset-11">
+            <p><%= link_to "もっと見る＞", products_path %></p>
+        </div>
+
+
     </div>
-
-
-    <div class="col-xs-2 col-xs-offset-9">
-        <p><%= link_to "もっと見る＞", products_path %></p>
-    </div>
-
-
 </div>
