@@ -14,8 +14,11 @@
  *= require_self
  */
 
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 
 .genre_search {
@@ -32,6 +35,17 @@
 .logo {
     font-size: 55px;
     font-family: cursive;
+}
+
+
+.logo a {
+	color: white;
+}
+
+
+.logo a:hover {
+    color: black;
+	background-color: white;
 }
 
 
@@ -55,3 +69,85 @@
 .indent_left {
 	margin-left: 20px;
 }
+
+
+header {
+	background-color :#8b0000;
+}
+
+
+body {
+	background-color: #ffffff;
+}
+
+
+.text-color {
+	color: white;
+}
+
+
+.text-color a{
+	color: white;
+}
+
+
+a {
+	color: black;
+}
+
+
+a:hover {
+	color: black;
+	background-color :#faebd7;
+}
+
+
+.btn-primary {
+	background: #a52a2a;
+	color: white;
+	border: none;
+}
+
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #cd5c5c !important;
+  border: 1px solid #cd5c5c !important;
+}
+
+
+.btn-danger {
+	background: #d3d3d3;
+	color: black;
+	border: none;
+}
+
+
+.btn-danger:hover {
+	background: #d3d3d3;
+	color: #ff0000;
+	border: none;
+}
+
+
+.btn-success {
+	background: #ffffff;
+	color: #000000;
+	border-color:#000000;
+}
+
+
+.btn-success:hover {
+	background: #dcdcdc;
+	color: #000000;
+	border-color:#000000;
+}
+
+
+.page-title {
+	margin: 0 0 20px 20px;
+}
+
+
+.flash-notice {
+	color: red;
+	}
