@@ -1,4 +1,5 @@
 class Customer::CartsController < ApplicationController
+	before_action :authenticate_customer!
 
 	def index
 		@carts = current_customer.carts
@@ -21,11 +22,6 @@ class Customer::CartsController < ApplicationController
 		redirect_to carts_path
 		flash[:notice] = "#{@cart.product.name}を#{@cart.product_quantity}個追加しました"
 
-		# 同じ商品が別にできてしまう
-		# @cart = Cart.new(cart_params)
-		# @cart.customer_id = current_customer.id
-		# @cart.save
-		# redirect_to carts_path
 	end
 
 	def destroy
@@ -39,11 +35,11 @@ class Customer::CartsController < ApplicationController
 		@carts = current_customer.carts
 		@cart = Cart.find(params[:id])
 		if @cart.update(cart_params)
-			flash[:notice] = "#{@cart.product.name}の数量を変更しました"
+			flash[:notice] = "#{@cart.product.name}の数量を#{@cart.product_quantity}個にしました"
 			redirect_to carts_path
 		else
 			redirect_to carts_path
-			flash[:alert] = "再度入力をお願いします"
+			flash[:alert] = "再度、半角数字で入力をお願いします"
 		end
 	end
 
