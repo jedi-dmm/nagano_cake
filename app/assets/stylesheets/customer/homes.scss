@@ -15,18 +15,19 @@
 
 
 .top_image {
-    margin: 30px;
-	padding: 70px;
+    background-image: image-url('top.png');
+    padding: 90px;
+    margin: 50px;
 	width: 600px;
 	background-size: cover;
-	background-color: #FAEBD7;
 }
 
 
 .style_top {
 	text-align: center;
-	padding: 30px;
-	background-color: white;
+	padding: 20px;
+	background-color: rgba(255,255,255,0.5);
+    color: black;
 }
 
 
@@ -43,6 +44,4 @@
 
 .about {
 	margin: 70px;
-	padding: 150px;
-	border:  2px solid #000000;
 }
