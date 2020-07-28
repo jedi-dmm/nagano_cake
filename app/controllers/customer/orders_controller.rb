@@ -52,12 +52,13 @@ class Customer::OrdersController < ApplicationController
 	    		post.name = @order.name
 	    		post.postcode = @order.postcode
 	    		post.address = @order.address
+	    		post.save
 	    	end
 
 	    	current_customer.carts.destroy_all
 	    	redirect_to thanks_path
 	 	else
-	    	redirect_to new_order_path, notice: "購入に失敗しました。お手数ですが、もう一度購入手続きを行ってください。"
+	    	redirect_to new_order_path, alert: "購入に失敗しました。お手数ですが、もう一度購入手続きを行ってください。"
 	    end
 	end
 

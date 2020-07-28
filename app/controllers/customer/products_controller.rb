@@ -20,9 +20,4 @@ class Customer::ProductsController < ApplicationController
         @genres = Genre.where(genre_status: true)
     end
 
-private
-    def post_image_params
-        params.require(:product).permit(:name, :caption, :price, :image)
-    end
-
 end
