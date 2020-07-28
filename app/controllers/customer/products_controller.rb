@@ -24,5 +24,4 @@ private
     def post_image_params
         params.require(:product).permit(:name, :caption, :price, :image)
     end
-
 end
