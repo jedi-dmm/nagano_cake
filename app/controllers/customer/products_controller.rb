@@ -3,6 +3,7 @@ class Customer::ProductsController < ApplicationController
 	def index
         if params[:genre_id]
             @products = Product.where(genre_id: params[:genre_id])
+            @genre = Genre.find(params[:genre_id])
         else
 		    @products = Product.all
         end
