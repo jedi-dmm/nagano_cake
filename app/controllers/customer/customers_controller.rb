@@ -27,7 +27,7 @@ class Customer::CustomersController < ApplicationController
         @customer.update(customer_status: false)
         reset_session
         flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-      redirect_to new_customer_registration_path
+      redirect_to root_path
     end
 
 	private
