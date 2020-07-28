@@ -23,13 +23,13 @@
 			<h3>商品名     <%= f.text_field :name %></h3>
 			<h3>商品説明   <%= f.text_area :caption %></h3>
 			<h3>ジャンル    <%= f.collection_select :genre_id, Genre.all, :id, :name %></h3>
-			<h3>税抜価格      <%= f.number_field :price %></h3>
+			<h3>税抜価格      <%= f.number_field :price, min:0 %></h3>
 			<h3>販売ステータス     <%= f.select :sale_status, Product.sale_statuses.keys %></h3>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-8">
-			<p><%= f.submit '新規登録' %></p>
+			<p><%= f.submit '新規登録', class: "btn btn-primary" %></p>
 		</div>
 	</div>
 	<% end %>
