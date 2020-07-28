@@ -11,10 +11,8 @@
 					<h3><strong>支払方法</strong></h3>
 				</div>
 				<div  class="col-xs-11 indent_left">
-					<%= radio_button_tag(:payment, "クレジットカード", :checked=>'checked' ) %>
-					<%= label_tag :クレジットカード %><br>
-					<%= radio_button_tag(:payment, "銀行振込") %>
-					<%= label_tag :銀行振込 %>
+					<label><%= radio_button_tag(:payment, "クレジットカード", :checked=>'checked' ) %> クレジットカード</label><br>
+					<label><%= radio_button_tag(:payment, "銀行振込") %> 銀行振込</label>
 				</div>								<!-- 支払い方法 -->
 			</div>
 
@@ -31,8 +29,10 @@
 						</label>
 					</div>
 					<div class="post_form">
-						<%= current_customer.postcode+" "+current_customer.address %><br>
-						<%= current_customer.last_name + current_customer.first_name %>
+						<div class="col-md-12" style="margin-bottom: 20px">
+							<%= current_customer.postcode+" "+current_customer.address %><br>
+							<%= current_customer.last_name + current_customer.first_name %>
+						</div>
 					</div>
 
 					<div>
@@ -42,7 +42,9 @@
 						</label>
 					</div>
 					<div class="post_form">
-						<%= collection_select :post_id,:id, @posts, :id, :view_post_full, {}, {style: "width: 80%",class: "form-control", id: "inputother_1", disabled: "disabled"} %>
+						<div class="col-md-12" style="margin-bottom: 20px">
+							<%= collection_select :post_id,:id, @posts, :id, :view_post_full, {}, {style: "width: 80%",class: "form-control", id: "inputother_1", disabled: "disabled"} %>
+						</div>
 					</div>
 
 					<div>
@@ -52,40 +54,24 @@
 						</label>
 					</div>
 					<div class="post_form">
-						<table>
-							<tbody>
-								<tr>
-									<td class="col-xs-3">郵便番号（ハイフンなし）</td>
-									<td>
-										<div class="form-group">
-											<%= text_field_tag :new_postcode,"", {style: "width: 150px", class: "validate required_postcode form-control", id: "inputother_2", disabled: "disabled"} %>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="col-xs-3">住所</td>
-									<td>
-										<div class="form-group">
-											<%= text_field_tag :new_address,"", {style: "width: 450px",class: "validate required_address form-control", id: "inputother_3", disabled: "disabled"}  %>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="col-xs-3">宛名</td>
-									<td>
-										<div class="form-group">
-											<%= text_field_tag :new_name,"", {style: "width: 200px",class: "validate required_name form-control", id: "inputother_4", disabled: "disabled"}  %>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<div class="col-md-3">郵便番号（ハイフンなし）</div>
+						<div class="col-md-9 form-group">
+							<%= text_field_tag :new_postcode,"", {style: "width: 150px", class: "validate required_postcode form-control", id: "inputother_2", disabled: "disabled"} %>
+						</div>
+						<div class="col-md-3">住所</div>
+						<div class="col-md-9 form-group">
+							<%= text_field_tag :new_address,"", {style: "width: 450px",class: "validate required_address form-control", id: "inputother_3", disabled: "disabled"}  %>
+						</div>
+						<div class="col-md-3">宛名</div>
+						<div class="col-md-9 form-group">
+							<%= text_field_tag :new_name,"", {style: "width: 200px",class: "validate required_name form-control", id: "inputother_4", disabled: "disabled"}  %>
+						</div>
 					</div>
 				</div>								<!-- お届け先 -->
 			</div>
 
 			<div class="row">				　　<!-- 入力完了ボタン -->
-					<%= submit_tag "確認画面へ進む" ,:class => 'btn btn-primary col-xs-4 col-xs-offset-4' %>
+				<%= submit_tag "確認画面へ進む" ,:class => 'btn btn-primary col-xs-4 col-xs-offset-4' %>
 			</div>
 			<% end %>
 		</div>

@@ -17,16 +17,32 @@
 					<% @orders.each do |order| %>
 					<tr>
 						<td class="vertical-center">
-							<%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'),admin_order_path(order)%>
+							<%= link_to admin_order_path(order) do %>
+								<div>
+									<%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+								</div>
+			 				<% end %>
 						</td>
 						<td class="vertical-center">
-							<%= order.customer.last_name + order.customer.first_name %>
+							<%= link_to admin_order_path(order) do %>
+								<div>
+									<%= order.customer.last_name + order.customer.first_name %>
+								</div>
+			 				<% end %>
 						</td>
 						<td class="vertical-center">
-							<%= order.order_products.all.sum(:product_quantity) %>
+							<%= link_to admin_order_path(order) do %>
+								<div>
+									<%= order.order_products.all.sum(:product_quantity) %>
+								</div>
+			 				<% end %>
 						</td>
 						<td class="vertical-center">
-							<%= order.order_status %>
+							<%= link_to admin_order_path(order) do %>
+								<div>
+									<%= order.order_status %>
+								</div>
+			 				<% end %>
 						</td>
 					</tr>
 					<% end %>

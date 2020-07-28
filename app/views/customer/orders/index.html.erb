@@ -17,27 +17,27 @@
 			<tbody>
 				<% @orders.each do |order| %>
 				<tr>
-					<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-					<td class="break">
+					<td class="p-center_v"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+					<td class="break p-center_v">
 						<%= order.postcode %><br>
 						<%= order.address %><br>
 						<%= order.name %><br>
 					</td>
-					<td>
+					<td class="p-center_v">
 						<% order.order_products.each do |order_product| %>
-						<p>・<%= order_product.product.name %></p>
+						・<%= order_product.product.name %>
 						<% end %>
 					</td>
-					<td class="vertical-center">
+					<td class="p-center_v">
 						<% total_fee = 0 %>
 						<% order.order_products.each do |order_product| %>
 						<% sub_total = order_product.unit_price * order_product.product_quantity %>
 						<% total_fee += sub_total %>
 						<% end%>
-						<p><%= (total_fee + Constants::POSTAGE).to_s(:delimited) %>円</p>
+						<%= (total_fee + Constants::POSTAGE).to_s(:delimited) %>円
 					</td>
-					<td class="vertical-center"><%= order.order_status %></td>
-					<td class="vertical-center">
+					<td class="p-center"><%= order.order_status %></td>
+					<td class="p-center">
 						<%= link_to "表示する",order_path(order),class: "btn btn-primary" %>
 					</td>
 				</tr>
