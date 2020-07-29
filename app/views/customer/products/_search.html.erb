@@ -1,0 +1,19 @@
+<table class="table table-inverse table-bordered">
+	<thead>
+		<tr>
+			<th>
+				<h3 class="text-center">ジャンル検索</h3>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<!-- 有効ジャンルの表示 -->
+				<% genres.each do |genre| %>
+					<%= link_to genre.name ,products_path(genre_id: genre.id),class: "col-xs-12 genre_search " %>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>

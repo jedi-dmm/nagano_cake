@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<!-- 検索ジャンル -->
+		<div class="col-sm-3">
+			<%= render 'search',genres: @genres %>
+		</div>
+		<div class="col-sm-9">
+			<% if params[:genre_id] %>
+				<h2><%= @genre.name %>一覧</h2>
+			<% else %>
+				<h2>商品一覧</h2>
+			<% end %>
+			<div class="row">
+				<% @products.each do |product| %>
+				<div class="col-sm-3 product_list">
+					<tr><p><%= link_to product_path(product.id) do %>
+						<%= attachment_image_tag product, :image, :fill, 150, 113, format: 'jpeg' %>
+						<% end %>
+					</p></tr>
+					<li><span><%= link_to product.name, product_path(product.id) %></span>
+					</li>
+					<li>
+						<% if product.sale_status == "売り切れ" %>
+						<span>売り切れ</span>
+						<% else %>
+						¥<span><%= product.price.to_s(:delimited) %>（税込）</span>
+						<% end %>
+					</li>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
