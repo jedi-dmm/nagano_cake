@@ -19,7 +19,7 @@
             <tr>
               <td><%= product.id %></td>
               <td><%= link_to product.name, admin_product_path(product.id) %></td>
-              <td><%= product.price %></td>
+              <td><%= product.price.to_s(:delimited) %></td>
               <td><%= product.genre.name %></td>
               <td><%= product.sale_status %></td>
             </tr>
@@ -27,5 +27,9 @@
         </tbody>
       </table>
 	 	</div>
+  </div>
+  <div class="row">
+   <div class="text-center">
      <%= paginate @products, class: "paginate" %>
+  </div>
 </div>

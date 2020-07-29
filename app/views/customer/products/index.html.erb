@@ -5,7 +5,11 @@
 			<%= render 'search',genres: @genres %>
 		</div>
 		<div class="col-sm-9">
-			<h2>商品一覧</h2>
+			<% if params[:genre_id] %>
+				<h2><%= @genre.name %>一覧</h2>
+			<% else %>
+				<h2>商品一覧</h2>
+			<% end %>
 			<div class="row">
 				<% @products.each do |product| %>
 				<div class="col-sm-3 product_list">
@@ -15,7 +19,12 @@
 					</p></tr>
 					<li><span><%= link_to product.name, product_path(product.id) %></span>
 					</li>
-					<li>¥<span><%= product.price %></span>
+					<li>
+						<% if product.sale_status == "売り切れ" %>
+						<span>売り切れ</span>
+						<% else %>
+						¥<span><%= ((product.price)*Constants::TAX_RATE).round.to_s(:delimited) %>（税込）</span>
+						<% end %>
 					</li>
 				</div>
 				<% end %>
