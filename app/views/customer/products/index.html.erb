@@ -23,7 +23,7 @@
 						<% if product.sale_status == "売り切れ" %>
 						<span>売り切れ</span>
 						<% else %>
-						¥<span><%= product.price.to_s(:delimited) %>（税込）</span>
+						¥<span><%= ((product.price)*Constants::TAX_RATE).round.to_s(:delimited) %>（税込）</span>
 						<% end %>
 					</li>
 				</div>
