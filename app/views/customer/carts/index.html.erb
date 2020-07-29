@@ -22,7 +22,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<!-- sumの初期化が必要 -->
+		<!-- sumの初期化 -->
 		<% sum = 0 %>
 		<!-- cartの一覧 -->
 		<% @carts.each do |cart| %>
@@ -35,7 +35,7 @@
 			<td>
 				<div id="product_quantity_edit">
 					<%= form_for(cart,url: cart_path(cart)) do |f| %>
-					<%= f.text_field :product_quantity, value: cart.product_quantity,:size => "2*2" %>
+					<%= f.text_field :product_quantity, value: cart.product_quantity,:size => "4*4" %>
 					<%= f.submit '変更',class: "btn btn-primary" %>
 					<% end %>
 				</div>
