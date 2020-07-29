@@ -10,7 +10,7 @@ class Admin::OrderProductsController < ApplicationController
 	        redirect_to admin_order_path(@order_product.order), alert: "未入金のため, 製作を開始できません. 先に注文ステータスを更新してください."
 
 	    	# 一つでも製作待ちから製作中or制作完了に変更された場合、注文ステータスを製作中に変更する
-	    elsif @order_products.where.not(production_status: "製作待ち").blank?
+	    elsif @order_products.where.not(production_status: "製作待ち").blank? && params[:order_product][:production_status] == "製作中"
 	    	@order_product.update(order_product_params)
 	    	@order.order_status = "製作中"
 	    	@order.save(order_params)
