@@ -3,7 +3,7 @@
 		<div class="col-md-3">
 			<%= render 'search',genres: @genres %>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<p><%= attachment_image_tag @product, :image, :fill, 280, 210, format: 'jpeg' %>
 			</p>
 		</div>
@@ -12,7 +12,7 @@
 				<h2><%= @product.name %></h2>
 				<h4><%= @product.caption %></h4>
 				<p></p>
-				<h3><%= @product.price %>円</h3>
+				<h3>¥<%= @product.price.to_s(:delimited) %> (税込)</h3>
 			</table>
 		</div>
 	</div>
@@ -21,10 +21,15 @@
 			<% if customer_signed_in? %>
 			<%= form_for(@cart) do |f| %>
 			<th><%= f.hidden_field :product_id, :value => @product.id %></th>
-			<th><%= f.select :product_quantity, options_for_select((1..100).to_a), {include_blank: "個数選択"},:required => true %></th>
-			<th><%= f.submit 'カートに入れる', class: "btn btn-primary" %></th>
-			<% end %>
-			<% end %>
+			<th>
+				<% if @product.sale_status == "売り切れ" %>
+				<h2>売り切れ</h2>
+				<% else %>
+				<%= f.select :product_quantity, options_for_select((1..100).to_a), {include_blank: "個数選択"},:required => true %></th>
+				<th> <%= f.submit 'カートに入れる', class: "btn btn-primary" %></th>
+				<% end %>
+				<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>

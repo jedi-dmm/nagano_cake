@@ -15,7 +15,12 @@
 					</p></tr>
 					<li><span><%= link_to product.name, product_path(product.id) %></span>
 					</li>
-					<li>¥<span><%= product.price %></span>
+					<li>
+						<% if product.sale_status == "売り切れ" %>
+						<span>売り切れ</span>
+						<% else %>
+						¥<span><%= product.price.to_s(:delimited) %>（税込）</span>
+						<% end %>
 					</li>
 				</div>
 				<% end %>

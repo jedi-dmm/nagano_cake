@@ -7,12 +7,12 @@
 	 	<div class="col-md-4">
 	    	<tr><%= attachment_image_tag @product, :image, :fill, 280, 210, format: 'jpeg' %></tr>
 	 	</div>
-	    <div class="col-md-4">
+	    <div class="col-md-5">
 	    	<table class="table table-bordered">
 	    		<h3>商品名　<%= @product.name %></h3>
 	    		<h3>商品説明　<%= @product.caption %></h3>
 	    		<h3>ジャンル　<%= @product.genre.name %></h3>
-	    		<h3>税抜き価格　<%= @product.price %></h3>
+	    		<h3>税込価格(税抜価格)　<%= ((@product.price)*Constants::TAX_RATE).round.to_s(:delimited) %> (<%= @product.price.to_s(:delimited) %>)円</h3>
 	    		<h3>販売ステータス　<%= @product.sale_status %></h3>
 	    	</table>
 	    </div>
