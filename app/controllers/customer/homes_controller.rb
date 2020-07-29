@@ -13,8 +13,6 @@ class Customer::HomesController < ApplicationController
 	@rank_sorted = @rank.sort {|a, b|
   		a[1] <=> b[1]
 	}.reverse
-
-
   end
 
   def about
