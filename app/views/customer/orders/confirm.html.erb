@@ -19,7 +19,10 @@
 
 					<% current_customer.carts.each do |cart| %>
 					<tr>
-			            <td><%= cart.product.name %></td>
+			            <td>
+							<%= attachment_image_tag(cart.product, :image,:fill, 40, 40, fallback: "no_image.jpg") %>
+							<%= cart.product.name %>
+						</td>
 			            <td>
 			            	<% unit_price = cart.product.price * Constants::TAX_RATE %>
 			            	<%= (unit_price.round).to_s(:delimited) %>

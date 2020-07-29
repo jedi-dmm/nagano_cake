@@ -11,7 +11,7 @@ class Admin::OrdersController < ApplicationController
 
 	def update
 		@order = Order.find(params[:id])
-			# 入金確認時にすべての商品を制作ステータスを製作待ちに変更
+			# 入金確認時にすべての商品の制作ステータスを製作待ちに変更
 	    if @order.order_status == "入金待ち" && params[:order][:order_status] == "入金確認"
 	    	@order.update(order_params)
 	    	@order.order_products.each do |order_product|
