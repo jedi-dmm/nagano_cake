@@ -5,7 +5,11 @@
 			<%= render 'search',genres: @genres %>
 		</div>
 		<div class="col-sm-9">
-			<h2>商品一覧</h2>
+			<% if params[:genre_id] %>
+				<h2><%= @genre.name %>一覧</h2>
+			<% else %>
+				<h2>商品一覧</h2>
+			<% end %>
 			<div class="row">
 				<% @products.each do |product| %>
 				<div class="col-sm-3 product_list">
